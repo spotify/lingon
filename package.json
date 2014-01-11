@@ -38,7 +38,8 @@
     "findup-sync": "~0.1.2",
     "optimist": "~0.6.0",
     "resolve": "~0.6.1",
-    "hike": "*"
+    "hike": "*",
+    "shellwords": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
