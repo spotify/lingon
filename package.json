@@ -21,7 +21,7 @@
       "url": "https://github.com/jpettersson/orangejuice/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/cli",
+  "main": "lib/orangejuice",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -34,7 +34,8 @@
     "express": "~3.4.7",
     "gulp-util": "~2.2.0",
     "pretty-hrtime": "~0.2.0",
-    "event-stream": "~3.1.0"
+    "event-stream": "~3.1.0",
+    "findup-sync": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
