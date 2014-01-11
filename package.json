@@ -1,0 +1,50 @@
+{
+  "name": "orangejuice",
+  "description": "A basic static site generator inspired by Middleman and Sprockets, implemented with gulp.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jpettersson/orangejuice",
+  "author": {
+    "name": "Jonathan Pettersson",
+    "email": "jonathan.anders.pettersson@gmail.com",
+    "url": "http://jpettersson.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jpettersson/orangejuice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jpettersson/orangejuice/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jpettersson/orangejuice/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/cli",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "dependencies": {
+    "gulp": "~3.2.0",
+    "gulp-concat": "*",
+    "express": "~3.4.7",
+    "gulp-util": "~2.2.0",
+    "pretty-hrtime": "~0.2.0",
+    "event-stream": "~3.1.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.2"
+  },
+  "keywords": [],
+  "preferGlobal": "true",
+  "bin": {
+    "orangejuice" : "lib/cli.js"
+  }
+}
