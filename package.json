@@ -35,7 +35,9 @@
     "gulp-util": "~2.2.0",
     "pretty-hrtime": "~0.2.0",
     "event-stream": "~3.1.0",
-    "findup-sync": "*"
+    "findup-sync": "~0.1.2",
+    "optimist": "~0.6.0",
+    "resolve": "~0.6.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
