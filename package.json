@@ -45,7 +45,8 @@
     "vinyl-source-stream": "*",
     "from": "*",
     "pipette": "*",
-    "gulp-footer": "*"
+    "gulp-footer": "*",
+    "gulp-ejs": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
