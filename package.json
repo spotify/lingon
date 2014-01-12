@@ -40,7 +40,10 @@
     "resolve": "~0.6.1",
     "hike": "*",
     "shellwords": "*",
-    "through": "*"
+    "through": "*",
+    "map-stream": "*",
+    "vinyl-source-stream": "*",
+    "from": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
