@@ -43,7 +43,9 @@
     "through": "*",
     "map-stream": "*",
     "vinyl-source-stream": "*",
-    "from": "*"
+    "from": "*",
+    "pipette": "*",
+    "gulp-footer": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
