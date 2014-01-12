@@ -46,7 +46,8 @@
     "from": "*",
     "pipette": "*",
     "gulp-footer": "*",
-    "gulp-ejs": "*"
+    "gulp-ejs": "~0.1.0",
+    "gulp-less": "~1.6.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
