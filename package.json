@@ -39,7 +39,8 @@
     "optimist": "~0.6.0",
     "resolve": "~0.6.1",
     "hike": "*",
-    "shellwords": "*"
+    "shellwords": "*",
+    "through": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
