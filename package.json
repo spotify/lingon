@@ -47,7 +47,10 @@
     "pipette": "*",
     "gulp-footer": "*",
     "gulp-ejs": "~0.1.0",
-    "gulp-less": "~1.6.1"
+    "gulp-less": "*",
+    "combined-stream": "*",
+    "vinyl-fs": "*",
+    "mergesort-stream": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
