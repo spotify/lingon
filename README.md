@@ -20,7 +20,7 @@ If you already love middleman and Sprockets but want/need to use node.js, this m
 * Out of the box support for: less and ejs
 * No DSL BS, the ojfile is JavaScript
 
-The project is currently very experimental, use it for fun.
+The project is currently very experimental, use it for fun. Things will change.
 
 ## Get it
 ```
@@ -31,6 +31,39 @@ npm install orangejuice
 Your project should have a so called "ojfile.js" which is used to configure and run Orangejuice.
 
 Here's a minimal ojfile with comments:
+
+```JavaScript
+#! /usr/bin/env node
+
+var oj = require('orangejuice');
+
+// The directory with your source tree, relative to the ojfile.
+oj.sourcePath = 'source';
+
+// The directory you want to build to, relative to the ojfile.
+oj.buildPath = 'build';
+```
+
+Here's another ojfile that uses a gulp plugin to compile html files into the angular template cache. In this case the The files are named .html.ngt so we register the processor for the 'ngt' file ending.
+
+```JavaScript
+#! /usr/bin/env node
+
+var oj = require('orangejuice');
+var html2js = require('gulp-html2js')
+
+oj.sourcePath = 'source';
+oj.buildPath = 'build';
+
+oj.preProcessors['ngt'] = function() {
+  return {
+    name: 'gulp-html2js',
+    stream: html2js({
+      base: 'source'
+    })
+  }
+};
+```
 
 ## Run it
 
@@ -46,9 +79,11 @@ Build once and quit:
 ./ojfile.js build
 ```
 
-## Examples
+## What about examples?
 
-Take a look at my Angular.js project template, built with Orangejuice:
+I've made an Angular.js template project that builds with Orangejuice.<br />
+It's the best reference to how Orangejuice works right now:
+
 https://github.com/jpettersson/orangejuice-ng-template
 
 ## License
