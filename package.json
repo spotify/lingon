@@ -21,7 +21,7 @@
       "url": "https://github.com/jpettersson/orangejuice/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/orangejuice",
+  "main": "lib/boot",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -50,6 +50,7 @@
     "gulp-less": "*",
     "combined-stream": "*",
     "vinyl-fs": "*",
+    "vinyl": "*",
     "mergesort-stream": "*"
   },
   "devDependencies": {
