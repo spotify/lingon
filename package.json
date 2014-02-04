@@ -60,7 +60,6 @@
     "grunt": "~0.4.2"
   },
   "keywords": [],
-  "preferGlobal": "true",
   "bin": {
     "orangejuice" : "lib/cli.js"
   }
