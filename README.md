@@ -20,7 +20,8 @@ If you already love middleman and Sprockets but want/need to use node.js, this m
 * Out of the box support for: less and ejs
 * No DSL BS, the ojfile is JavaScript
 
-The project is currently very experimental, use it for fun. Things will change.
+The project is currently very experimental, use it for fun. 
+Things will change.
 
 ## Get it
 ```
