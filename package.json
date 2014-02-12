@@ -1,6 +1,6 @@
 {
   "name": "orangejuice",
-  "description": "A minimalistic static site generator inspired by Middleman and Sprockets, compatible with gulp plugins.",
+  "description": "A minimal static site generator inspired by Middleman and Sprockets, compatible with gulp plugins.",
   "version": "0.1.0",
   "homepage": "https://github.com/jpettersson/orangejuice",
   "author": {
@@ -8,6 +8,13 @@
     "email": "jonathan@spacetofu.com",
     "url": "http://jpettersson.com"
   },
+  "contributors": [
+    {
+      "name": "Philip von Bargen",
+      "email": "philip@philipvonbargen.de",
+      "url": "http://philipvonbargen.de"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jpettersson/orangejuice.git"
@@ -23,7 +30,7 @@
   ],
   "main": "lib/boot",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.9"
   },
   "scripts": {
     "test": "grunt nodeunit"
@@ -46,5 +53,5 @@
   "devDependencies": {
 
   },
-  "keywords": ["middleman", "sprockets", "build"]
+  "keywords": ["middleman", "sprockets", "build", "javascript", "static", "site", "generator", "gulp"]
 }
