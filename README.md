@@ -1,6 +1,6 @@
 # orangejuice 
 
-A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. The project is currently very experimental, use it for fun. Things will change.
+A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. **The project is currently very experimental, use it for fun. Things will change.**
 
 ## Overview
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
