@@ -1,6 +1,6 @@
 # orangejuice 
 
-A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. The project is currently very experimental, use it for fun. Things will change.
+A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. **The project is currently very experimental, use it for fun. Things will change.**
 
 ## Overview
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
@@ -25,11 +25,7 @@ Orangejuice favors convention over configuration. For example, Grunt & Gulp prov
 
 Orangejuice is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed bases on their filename extensions. 
 
-Example: "index.html.ejs" will be run through the EJS processor. 
-
-These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins.
-
-If you want to teach Orangejuice something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
+Example: "index.html.ejs" will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Orangejuice something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
 
 ## Get it
 ```
