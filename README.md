@@ -1,6 +1,6 @@
 # orangejuice 
 
-A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins.
+A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. The project is currently very experimental, use it for fun. Things will change.
 
 ## Overview
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
@@ -8,26 +8,22 @@ We are specifically targeting the features that are useful when building single 
 
 If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-*"Orangejuice"* because gulp and you know, it's healthy and tasty.
-
+The name *"Orangejuice"* because of gulp and you know, it's healthy and tasty.
 
 **Features**
 
-* Powered by node.js streams & compatible with many gulp plugins
+* Powered by node streams & compatible with many gulp plugins
 * Sprockets-like "include" directive for file concatenation
-* Use Gulp plugins as Sprockets-like file processors.
+* Use Gulp plugins as Sprockets-like file processors
 * Built in http server (rebuilds files on browser refresh, no flaky fs watch).
 * Out of the box support for: less and ejs
-* No DSL BS, the ojfile is JavaScript
-
-The project is currently very experimental, use it for fun. 
-Things will change.
+* No DSL, the ojfile is JavaScript
 
 ## How is it different from Gulp, Grunt, X?
 
 Orangejuice favors convention over configuration. For example, Grunt & Gulp provides powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
 
-Orangejuice is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed bases on their filename endings. 
+Orangejuice is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed bases on their filename extensions. 
 
 Example: "index.html.ejs" will be run through the EJS processor. 
 
@@ -46,7 +42,7 @@ Your project should have a so called "ojfile.js" which is used to configure and 
 Here's a minimal ojfile with comments:
 
 ```JavaScript
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 var oj = require('orangejuice');
 
@@ -60,7 +56,7 @@ oj.buildPath = 'build';
 Here's another ojfile that uses a gulp plugin to compile html files into the angular template cache. In this case the The files are named .html.ngt so we register the processor for the 'ngt' file ending.
 
 ```JavaScript
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 var oj = require('orangejuice');
 var html2js = require('gulp-html2js')
@@ -82,23 +78,26 @@ oj.preProcessors['ngt'] = function() {
 
 Make your ojfile.js executable:
 ```
+chmod +x ojfile.js
+```
+
+```
+Build once and quit:
+./ojfile.js build
+
 Start the server: 
 ./ojfile.js
 
 Start the server on a custom port:
 ./ojfile.js server -p 1111
-
-Build once and quit:
-./ojfile.js build
 ```
 
 ## What about examples?
 
-I've made an Angular.js template project that builds with Orangejuice.<br />
+We've made an Angular.js template project that builds with Orangejuice.<br />
 It's the best reference to how Orangejuice works right now:
 
 https://github.com/jpettersson/orangejuice-ng-template
 
 ## License
-Copyright (c) 2014 Jonathan Pettersson  
 Licensed under the MIT license.
