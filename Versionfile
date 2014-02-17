@@ -1,0 +1,18 @@
+require 'json'
+
+# Automatically create an atomic commit of the version file update
+# and create a new tag.
+automate_git :actions => [:commit, :tag]
+
+file = './package.json'
+
+read_version do
+  doc = JSON.load File.read file
+  doc['version']
+end
+
+write_version do |currentVersion, nextVersion|
+  doc = JSON.load File.read file
+  doc['version'] = nextVersion.to_s
+  File.open(file, 'w') {|f| f.write JSON.pretty_generate(doc) }
+end
