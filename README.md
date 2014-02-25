@@ -92,11 +92,17 @@ It's the best reference to how Orangejuice works right now:
 
 https://github.com/jpettersson/orangejuice-ng-template
 
+## Test it
+
+Run the [bats](https://github.com/sstephenson/bats) e2e tests:
+```
+./tests.sh
+```
+
 ## Maintainers
 
 * Jonathan Pettersson ( [jpettersson](http://github.com/jpettersson) )
 * Philip von Bargen ( [philipvonbargen](http://github.com/philipvonbargen) )
-
 
 ## License
 Licensed under the MIT license.
