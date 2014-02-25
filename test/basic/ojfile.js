@@ -1,0 +1,1 @@
+var oj = require('../../lib/boot');
