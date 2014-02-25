@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    autoversion (0.5.2)
+      git (= 1.2.5)
+      semantic (= 1.1.0)
+      thor (= 0.17.0)
+    git (1.2.5)
+    semantic (1.1.0)
+    thor (0.17.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  autoversion (~> 0.5.2)
