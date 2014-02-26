@@ -4,11 +4,11 @@
 # Before each spec
 setup() {
   # cd to the basic test project
-  CWD='test/basic'
+  CWD='test/basic2'
   cd $CWD
 }
 
-@test "basic project: can build" {
+@test "basic project 2: can build" {
   # Remove existing build/
   if [ -d './build' ]; then
     rm -r ./build 2> /dev/null
@@ -18,22 +18,19 @@ setup() {
   ./ojfile.js build
 
   # Check that correct output files exist
-  [ -f 'build/index.html' ]
-  [ -f 'build/index.js' ]
-  [ -f 'build/index.css' ]
-  [ -f 'build/lib/lib.js' ]
-  [ ! -d 'build/_vendor' ]
+  [ -f 'build/js/vendor.js' ]
+  [ -f 'build/css/vendor.css' ]
 }
 
-@test "basic project: can concatenate js files" {
+@test "basic project 2: can concatenate js files" {
   # Compare the built index.js file to a reference
   # Success if diff exited with status 0 
 
-  diff build/index.js fixtures/index.js  
+  diff build/js/vendor.js fixtures/vendor.js  
   [ $? -eq 0 ]
 }
 
-@test "basic project: can serve files over http" {
+@test "basic project 2: can serve files over http" {
   # Remove existing tmp/
   if [ -d './tmp' ]; then
     rm -r ./tmp 2> /dev/null
@@ -54,24 +51,16 @@ setup() {
   server="http://localhost:4567"
   download="curl --silent -o"
   
-  ${download} tmp/index.html $server/index.html
-  ${download} tmp/index.js $server/index.js
-  ${download} tmp/index.css $server/index.css
-  ${download} tmp/lib.js $server/lib/lib.js
+  ${download} tmp/vendor.js $server/js/vendor.js
+  ${download} tmp/vendor.css $server/css/vendor.css
 
   # Terminate server
   kill $OJ_JOB_PID
 
   # Did we get everything?
-  diff tmp/index.html build/index.html
-  [ $? -eq 0 ]
-  
-  diff tmp/index.js build/index.js
+  diff tmp/vendor.js build/js/vendor.js
   [ $? -eq 0 ]
 
-  diff tmp/index.css build/index.css
-  [ $? -eq 0 ]
-
-  diff tmp/lib.js build/lib/lib.js
+  diff tmp/vendor.css build/css/vendor.css
   [ $? -eq 0 ]
 }
