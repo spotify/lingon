@@ -33,7 +33,7 @@
     "node": ">= 0.9"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "./test.sh"
   },
   "dependencies": {
     "express": "~3.4.7",
