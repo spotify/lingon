@@ -48,10 +48,10 @@
     "gulp-ejs": "~0.1.0",
     "gulp-less": "~1.2.1",
     "vinyl-fs": "~0.0.2",
-    "vinyl": "~0.2.3"
+    "vinyl": "~0.2.3",
+    "express-livereload": "0.0.24"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "keywords": [
     "middleman",
     "sprockets",
