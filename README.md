@@ -1,5 +1,8 @@
 # orangejuice 
 
+[![Build Status](https://travis-ci.org/jpettersson/orangejuice.png?branch=master)](https://travis-ci.org/jpettersson/orangejuice)
+[![Dependency Status](https://david-dm.org/jpettersson/orangejuice.png)](https://david-dm.org/jpettersson/orangejuice)
+
 A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. **The project is currently very experimental, use it for fun. Things will change.**
 
 ## Overview
