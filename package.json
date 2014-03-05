@@ -48,7 +48,8 @@
     "gulp-ejs": "~0.2.0",
     "gulp-less": "~1.2.1",
     "vinyl-fs": "~0.1.0",
-    "vinyl": "~0.2.3"
+    "vinyl": "~0.2.3",
+    "eventdispatcher": "1.0.0"
   },
   "devDependencies": {},
   "keywords": [
