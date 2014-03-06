@@ -106,6 +106,7 @@ Run the [bats](https://github.com/sstephenson/bats) e2e tests:
 
 * Jonathan Pettersson ( [jpettersson](http://github.com/jpettersson) )
 * Philip von Bargen ( [philipvonbargen](http://github.com/philipvonbargen) )
+* Jonatan Dahl ( [javoire](http://github.com/javoire) )
 
 ## License
 Licensed under the MIT license.
