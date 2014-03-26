@@ -30,6 +30,16 @@ setup() {
   [ $? -eq 0 ]
 }
 
+@test "basic project 2: less files with valid globs include self and globs" {
+  diff build/matching_include.css fixtures/matching_include.css
+  [ $? -eq 0 ]
+}
+
+@test "basic project 2: less files with empty globs still include self" {
+  diff build/non_matching_include.css fixtures/non_matching_include.css
+  [ $? -eq 0 ]
+}
+
 @test "basic project 2: can serve files over http" {
   # Remove existing tmp/
   if [ -d './tmp' ]; then
