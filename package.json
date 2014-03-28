@@ -1,7 +1,7 @@
 {
   "name": "orangejuice",
   "description": "A minimal static site generator inspired by Middleman and Sprockets, compatible with gulp plugins.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "https://github.com/jpettersson/orangejuice",
   "author": {
     "name": "Jonathan Pettersson",
