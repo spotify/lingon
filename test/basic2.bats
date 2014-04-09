@@ -1,4 +1,4 @@
-# Test OJ against the simplest project possible.
+# Test Lingon against the simplest project possible.
 # Covers: Building, Concatenating, Serving over http
 
 # Before each spec
@@ -15,7 +15,7 @@ setup() {
   fi
 
   # Build project
-  ./ojfile.js build
+  ./lingon.js build
 
   # Check that correct output files exist
   [ -f 'build/js/vendor.js' ]
@@ -50,9 +50,9 @@ setup() {
   mkdir ./tmp
 
   # Start the http server
-  OJ_JOB="./ojfile.js server -p 4567"
-  eval ${OJ_JOB} > /dev/null &
-  OJ_JOB_PID=`ps ax | grep -e "${OJ_JOB}" | grep -v grep | awk '{print $1}'`
+  LINGON_JOB="./lingon.js server -p 4567"
+  eval ${LINGON_JOB} > /dev/null &
+  LINGON_JOB_PID=`ps ax | grep -e "${LINGON_JOB}" | grep -v grep | awk '{print $1}'`
 
   # Wait a while
   sleep 2
@@ -69,7 +69,7 @@ setup() {
   ${download} tmp/vendor.css $server/css/vendor.css
 
   # Terminate server
-  kill $OJ_JOB_PID
+  kill $LINGON_JOB_PID
 
   # Did we get everything?
   diff tmp/vendor.js build/js/vendor.js

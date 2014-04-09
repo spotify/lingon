@@ -1,4 +1,4 @@
-# Test OJ against the simplest project possible.
+# Test Lingon against the simplest project possible.
 # Covers: Custom processors, alternate processor syntax
 
 # Before each spec
@@ -15,7 +15,7 @@ setup() {
   fi
 
   # Build project
-  ./ojfile.js build
+  ./lingon.js build
 
   # Check that correct output files exist
   [ -f 'build/index.simplesyntax' ]
