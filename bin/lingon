@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var chalk = require('chalk');
+var log = require('../lib/utils/log');
+var Liftoff = require('liftoff');
+
+var cli = new Liftoff({
+  processTitle: 'lingon',
+  moduleName: 'lingon',
+  configName: 'lingon'
+});
+
+cli.launch(function handleArguments(env) {
+  var argv = env.argv;
+
+  if (!env.modulePath) {
+    log(chalk.red('No local lingon install found in'), chalk.magenta(env.cwd));
+    log(chalk.yellow('Try running: npm install lingon'));
+    process.exit(1);
+  }
+
+  if (!env.configPath) {
+    log(chalk.red('No lingon.js file found'));
+    process.exit(1);
+  }
+
+  // Change working directory to the one containing lingon.js
+  process.chdir(env.configBase);
+  
+  // Hand off control to lingon.js
+  require(env.configPath);
+});
