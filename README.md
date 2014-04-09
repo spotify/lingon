@@ -20,7 +20,7 @@ The name *"Lingon"* because of gulp and you know, it's healthy and tasty.
 * Use Gulp plugins as Sprockets-like file processors
 * Built in http server (rebuilds files on browser refresh, no flaky fs watch).
 * Out of the box support for: less and ejs
-* No DSL, the ojfile is JavaScript
+* No DSL, the lingon.js file is JavaScript
 
 ## How is it different from Gulp, Grunt, X?
 
@@ -36,9 +36,9 @@ npm install lingon
 ```
 
 ## Configure it
-Your project should have a so called "ojfile.js" which is used to configure and run Lingon.
+Your project should have a lingon.js file which is used to configure and run Lingon.
 
-Here's a minimal ojfile with comments:
+Here's a minimal lingon.js file with comments:
 
 ```JavaScript
 #!/usr/bin/env node
@@ -101,12 +101,6 @@ Run the [bats](https://github.com/sstephenson/bats) e2e tests:
 ```
 ./tests.sh
 ```
-
-## Maintainers
-
-* Jonathan Pettersson ( [jpettersson](http://github.com/jpettersson) )
-* Philip von Bargen ( [philipvonbargen](http://github.com/philipvonbargen) )
-* Jonatan Dahl ( [javoire](http://github.com/javoire) )
 
 ## License
 Licensed under the MIT license.
