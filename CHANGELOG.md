@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.5.1
+
+* Display lingon version with: `lingon version`
+* Improvements to the help command
+
 ## Version 0.5.0
 
 * The lingon command can now be installed globally with npm install -g lingon.
