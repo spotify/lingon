@@ -26,6 +26,8 @@ cli.launch(function handleArguments(env) {
     process.exit(1);
   }
 
+  global.lingonCliVersion = env.modulePackage.version;
+
   // Change working directory to the one containing lingon.js
   process.chdir(env.configBase);
   
