@@ -80,7 +80,6 @@ lingon.preProcessor('ngt', function() {
 
 ```
 Make your lingon.js file executable
-
 chmod +x lingon.js
 
 Show help: 
