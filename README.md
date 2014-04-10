@@ -33,10 +33,6 @@ Example: "index.html.ejs" will be run through the EJS processor. These processor
 
 ## Get it
 ```
-# Install the lingon cli globally:
-``
-npm install -g lingon
-``
 
 # Locally in your project
 ``
@@ -83,17 +79,21 @@ lingon.preProcessor('ngt', function() {
 ## Run it
 
 ```
+Make your lingon.js file executable
+
+chmod +x lingon.js
+
 Show help: 
-lingon -h
+./lingon.js -h
 
 Build once and quit:
-lingon build
+./lingon.js build
 
 Start the server: 
-lingon
+./lingon.js
 
 Start the server on a custom port:
-lingon server -p 1111
+./lingon.js server -p 1111
 ```
 
 ## What about examples?
