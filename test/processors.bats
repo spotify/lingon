@@ -19,12 +19,16 @@ setup() {
 
   # Check that correct output files exist
   [ -f 'build/index.simplesyntax' ]
+  [ -f 'build/matching.simplesyntax' ]
   [ -f 'build/index.alternativesyntax' ]
   [ -f 'build/index.multiplesyntax' ]
 }
 
 @test "processors project: custom processors produce correct output" {
   diff build/index.simplesyntax fixtures/index.simplesyntax
+  [ $? -eq 0 ]
+
+  diff build/matching.simplesyntax fixtures/matching.simplesyntax
   [ $? -eq 0 ]
 
   diff build/index.alternativesyntax fixtures/index.alternativesyntax
