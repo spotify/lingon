@@ -11,7 +11,7 @@ We are specifically targeting the features that are useful when building single 
 
 If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-The name *"Lingon"* because of gulp and you know, it's healthy and tasty.
+This project was previously known as "Orangejuice". The orangejuice npm package has been deprecated, but the project is very much alive with the new shiny name!
 
 **Features**
 
