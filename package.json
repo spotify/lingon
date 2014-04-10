@@ -32,9 +32,6 @@
   "engines": {
     "node": ">= 0.9"
   },
-  "bin": {
-    "lingon": "bin/lingon"
-  },
   "scripts": {
     "test": "./test.sh"
   },
@@ -52,8 +49,7 @@
     "gulp-less": "^1.2.1",
     "vinyl-fs": "^0.1.0",
     "vinyl": "^0.2.3",
-    "eventdispatcher": "^1.0.0",
-    "liftoff": "~0.9.5"
+    "eventdispatcher": "^1.0.0"
   },
   "devDependencies": {
   },
