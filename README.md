@@ -7,11 +7,12 @@ A minimal static site generator inspired by Middleman and Sprockets, compatible 
 
 ## Overview
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
-We are specifically targeting the features that are useful when building single page JS apps. <br />
+We are specifically targeting the features that are useful when building single page JS apps. If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
+**Namechange**
 
-This project was previously known as "Orangejuice". The orangejuice npm package has been deprecated, but the project is very much alive with the new shiny name!
+This project was previously known as Orangejuice.<br />
+It is still very much alive, but with the new shiny name: Lingon.
 
 **Features**
 
