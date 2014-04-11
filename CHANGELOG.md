@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.6.0
+
+* Add method to register path-matching processors (The processor will only be run if the file path matches the given regular expression)
+
 ## Version 0.5.3
 
 * Bugfixes around how the -v flag is handled by lingon-cli and lingon
