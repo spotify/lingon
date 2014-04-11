@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.5.3
+
+* Bugfixes around how the -v flag is handled by lingon-cli and lingon
+
+## Version 0.5.2
+
+* Removed the lingon binary from this project and moved it to the lingon-cli package
+
 ## Version 0.5.1
 
 * Display lingon version with: `lingon version`
