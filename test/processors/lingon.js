@@ -15,6 +15,9 @@ var createProcessor = function(type) {
 };
 
 oj.preProcessor('simplesyntax', function(params) {
+  return createProcessor('simple preprocessor that will be overwritten ');
+});
+oj.preProcessor('simplesyntax', function(params) {
   return createProcessor('simple pre');
 });
 
@@ -33,20 +36,26 @@ oj.preProcessor('multiplesyntax', function(params) {
 
 
 
-oj.postProcessor('simplesyntax').push(function(params) {
+oj.postProcessor('simplesyntax').set(function(params) {
+  return createProcessor('simple postprocessor that will be overwritten ');
+});
+oj.postProcessor('simplesyntax').set(function(params) {
   return createProcessor('simple post');
 });
+oj.postProcessor('simplesyntax').add(/matching/, function(params) {
+  return createProcessor('simple path-matching post');
+});
 
-oj.postProcessor('alternativesyntax').push(function(params) {
+oj.postProcessor('alternativesyntax').add(function(params) {
   return [
     createProcessor('alternative post')
   ];
 });
 
-oj.postProcessor('multiplesyntax', function(params) {
+oj.postProcessor('multiplesyntax').add(function(params) {
   return createProcessor('multiple1 post');
 });
-oj.postProcessor('multiplesyntax').push(function(params) {
+oj.postProcessor('multiplesyntax').add(function(params) {
   return [
     createProcessor('multiple2 post'),
     createProcessor('multiple3 post')
