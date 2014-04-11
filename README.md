@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
 
-A minimal static site generator inspired by Middleman and Sprockets, compatible with some gulp plugins. **The project is currently very experimental, use it for fun. Things will change.**
+A minimal static site generator inspired by Middleman and Sprockets. Lingon is compatible with some gulp plugins.
 
 ## Overview
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
@@ -94,6 +94,11 @@ Start the server:
 Start the server on a custom port:
 ./lingon.js server -p 1111
 ```
+
+## Command line interface
+
+Don't want to execute the lingon.js file directly? Would you prefer a cli?<br />
+Check out the experimental [lingon-cli](http://github.com/jpettersson/lingon-cli)
 
 ## What about examples?
 
