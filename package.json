@@ -49,7 +49,7 @@
     "gulp-less": "^1.2.1",
     "vinyl-fs": "^0.1.0",
     "vinyl": "^0.2.3",
-    "eventdispatcher": "^1.0.0"
+    "event-emitter": "^0.2.2"
   },
   "devDependencies": {
   },
