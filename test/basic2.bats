@@ -24,9 +24,9 @@ setup() {
 
 @test "basic project 2: can concatenate js files" {
   # Compare the built index.js file to a reference
-  # Success if diff exited with status 0 
+  # Success if diff exited with status 0
 
-  diff build/js/vendor.js fixtures/vendor.js  
+  diff build/js/vendor.js fixtures/vendor.js
   [ $? -eq 0 ]
 }
 
@@ -40,12 +40,17 @@ setup() {
   [ $? -eq 0 ]
 }
 
+@test "basic project 2: less files with less imports still work after a lingon include" {
+  diff build/import_after_include.css fixtures/import_after_include.css
+  [ $? -eq 0 ]
+}
+
 @test "basic project 2: can serve files over http" {
   # Remove existing tmp/
   if [ -d './tmp' ]; then
     rm -r ./tmp 2> /dev/null
   fi
-  
+
   # Create tmp/
   mkdir ./tmp
 
@@ -63,7 +68,7 @@ setup() {
   # Get some files
   server="http://localhost:4567"
   download="curl --silent -o"
-  
+
   ${download} tmp/vendor.js $server/js/vendor.js
   ${download} tmp/vendor_copy.js $server/js/vendor_copy.js
   ${download} tmp/vendor.css $server/css/vendor.css
