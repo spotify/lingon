@@ -1,4 +1,4 @@
-# lingon 
+# lingon
 
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
@@ -27,7 +27,7 @@ It is still very much alive, but with the new shiny name: Lingon.
 
 Lingon favors convention over configuration. For example, Grunt & Gulp provides powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
 
-Lingon is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed bases on their filename extensions. 
+Lingon is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed bases on their filename extensions.
 
 Example: "index.html.ejs" will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Lingon something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
 
@@ -82,13 +82,13 @@ lingon.preProcessor('ngt', function() {
 Make your lingon.js file executable
 chmod +x lingon.js
 
-Show help: 
+Show help:
 ./lingon.js -h
 
 Build once and quit:
 ./lingon.js build
 
-Start the server: 
+Start the server:
 ./lingon.js
 
 Start the server on a custom port:
