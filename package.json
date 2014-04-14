@@ -1,8 +1,8 @@
 {
-  "name": "orangejuice",
+  "name": "lingon",
   "description": "A minimal static site generator inspired by Middleman and Sprockets, compatible with gulp plugins.",
-  "version": "0.2.0",
-  "homepage": "https://github.com/jpettersson/orangejuice",
+  "version": "0.6.1",
+  "homepage": "https://github.com/jpettersson/lingon",
   "author": {
     "name": "Jonathan Pettersson",
     "email": "jonathan@spacetofu.com",
@@ -17,15 +17,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jpettersson/orangejuice.git"
+    "url": "git://github.com/jpettersson/lingon.git"
   },
   "bugs": {
-    "url": "https://github.com/jpettersson/orangejuice/issues"
+    "url": "https://github.com/jpettersson/lingon/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jpettersson/orangejuice/blob/master/LICENSE-MIT"
+      "url": "https://github.com/jpettersson/lingon/blob/master/LICENSE-MIT"
     }
   ],
   "main": "lib/boot",
@@ -36,20 +36,20 @@
     "test": "./test.sh"
   },
   "dependencies": {
-    "express": "~3.4.7",
+    "express": "^3.4.7",
     "chalk": "*",
-    "event-stream": "~3.1.0",
-    "gulp-concat": "~2.1.7",
-    "optimist": "~0.6.0",
-    "hike": "~0.1.3",
-    "shellwords": "~0.1.0",
-    "through": "~2.3.4",
-    "from": "~0.1.3",
-    "gulp-ejs": "~0.2.0",
-    "gulp-less": "~1.2.1",
-    "vinyl-fs": "~0.1.0",
-    "vinyl": "~0.2.3",
-    "eventdispatcher": "1.0.0"
+    "event-stream": "^3.1.0",
+    "gulp-concat": "^2.1.7",
+    "minimist": "~0.0.8",
+    "hike": "^0.1.3",
+    "shellwords": "^0.1.0",
+    "through": "^2.3.4",
+    "from": "^0.1.3",
+    "gulp-ejs": "^0.2.0",
+    "gulp-less": "^1.2.1",
+    "vinyl-fs": "^0.1.0",
+    "vinyl": "^0.2.3",
+    "eventdispatcher": "^1.0.0"
   },
   "devDependencies": {
   },
