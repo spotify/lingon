@@ -32,14 +32,15 @@ Lingon is inspired by Sprockets and uses a convention approach: A set of simple 
 Example: "index.html.ejs" will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Lingon something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
 
 ## Get it
+
+#### Locally in your project
+```
+$ npm install lingon # Or add lingon to your package.json file
 ```
 
-# Locally in your project
-``
-npm install lingon # Or add lingon to your package.json file
-``
-
-```
+#### Command line interface
+Don't want to execute the lingon.js file directly? Would you prefer a cli?<br />
+Check out the experimental [lingon-cli](http://github.com/jpettersson/lingon-cli)
 
 ## Configure it
 Your project should have a lingon.js file which is used to configure and run Lingon.
@@ -58,21 +59,35 @@ lingon.sourcePath = 'source';
 lingon.buildPath = 'build';
 ```
 
-Here's another lingon.js file that uses a gulp plugin to compile html files into the angular template cache. In this case the The files are named .html.ngt so we register the processor for the 'ngt' file ending.
+Here's another lingon.js file that uses a lingon plugin to compile html files into the angular template cache. In this case the The files are named .html.ngt so we register the processor for the 'ngt' file ending. Additionally JavaScript files will be  post-processed by the uglify gulp plugin when executing the `build` task.
 
 ```JavaScript
 #!/usr/bin/env node
 
 var lingon = require('lingon');
-var html2js = require('gulp-html2js');
+var ngHtml2js = require('lingon-ng-html2js');
+var uglify = require('gulp-uglify');
 
 lingon.sourcePath = 'source';
 lingon.buildPath = 'build';
 
+// registering a processor in the short syntax (overwrites previous ones for the file type)
+// long form would be: lingon.preProcessor('ngt').set(name, factory)
 lingon.preProcessor('ngt', function() {
-  return html2js({
-    base: 'source'
-  })
+  return ngHtml2js({ base: 'source' })
+});
+
+// extending the processors for a file type and limiting it to files that don not contain ".min" in their path
+lingon.postProcessor('js').add(/^((?!\.min).)*$/, function() {
+  var processors = [];
+
+  if(lingon.task == 'build') {
+    processors.push(
+      uglify({ outSourceMap: true })
+    );
+  }
+
+  return processors;
 });
 ```
 
@@ -80,25 +95,23 @@ lingon.preProcessor('ngt', function() {
 
 ```
 Make your lingon.js file executable
-chmod +x lingon.js
+$ chmod +x lingon.js
 
 Show help:
-./lingon.js -h
+$ ./lingon.js -h
 
 Build once and quit:
-./lingon.js build
+$ ./lingon.js build
+
+Clean and build:
+$ ./lingon.js clean build
 
 Start the server:
-./lingon.js
+$ ./lingon.js
 
 Start the server on a custom port:
-./lingon.js server -p 1111
+$ ./lingon.js server -p 1111
 ```
-
-## Command line interface
-
-Don't want to execute the lingon.js file directly? Would you prefer a cli?<br />
-Check out the experimental [lingon-cli](http://github.com/jpettersson/lingon-cli)
 
 ## What about examples?
 
@@ -111,7 +124,7 @@ https://github.com/jpettersson/lingon-ng-template
 
 Run the [bats](https://github.com/sstephenson/bats) e2e tests:
 ```
-./tests.sh
+$ ./tests.sh
 ```
 
 ## License
