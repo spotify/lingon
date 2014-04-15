@@ -35,6 +35,16 @@ setup() {
   [ ! -f 'build/random.file' ]
 }
 
+@test "basic project 2: can execute multiple arguments" {
+  touch build/random.file
+
+  # Clean build folder and then build project
+  ./lingon.js clean build
+
+  # Check that the build folder has been cleaned
+  [ ! -f 'build/random.file' ]
+}
+
 @test "basic project 2: can concatenate js files" {
   # Compare the built index.js file to a reference
   # Success if diff exited with status 0
