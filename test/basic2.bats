@@ -22,6 +22,19 @@ setup() {
   [ -f 'build/css/vendor.css' ]
 }
 
+@test "basic project 2: can clean" {
+  touch build/random.file
+
+  # Clean build folder
+  ./lingon.js clean
+
+  # Build project
+  ./lingon.js build
+
+  # Check that the build folder has been cleaned
+  [ ! -f 'build/random.file' ]
+}
+
 @test "basic project 2: can concatenate js files" {
   # Compare the built index.js file to a reference
   # Success if diff exited with status 0
