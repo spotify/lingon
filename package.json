@@ -50,7 +50,8 @@
     "vinyl-fs": "^0.1.0",
     "vinyl": "^0.2.3",
     "event-emitter": "^0.2.2",
-    "rimraf": "^2.2.6"
+    "rimraf": "^2.2.6",
+    "minimatch": "0.2.14"
   },
   "devDependencies": {
   },

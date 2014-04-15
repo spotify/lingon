@@ -7,7 +7,7 @@ var createProcessor = function(type) {
   return es.map(function(file, cb) {
     var contents = file.contents.toString('utf8');
 
-    contents += type + 'processor has been executed' + "\r\n";
+    contents += type + 'processor has been executed' + "\n";
 
     file.contents = new Buffer(contents);
     cb(null, file);
