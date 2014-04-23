@@ -6,8 +6,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('_app/a.ngt',
-    '<h1>A</h1>\n' +
-    '');
+    '<h1>A</h1>');
 }]);
 })();
 
@@ -21,7 +20,6 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('_app/b.ngt',
-    '<h1>A</h1>\n' +
-    '');
+    '<h1>A</h1>');
 }]);
 })();
