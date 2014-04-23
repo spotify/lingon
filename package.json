@@ -54,6 +54,7 @@
     "minimatch": "0.2.14"
   },
   "devDependencies": {
+    "lingon-ng-html2js": "~0.1.6"
   },
   "keywords": [
     "middleman",
