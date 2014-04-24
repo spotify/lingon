@@ -11,7 +11,6 @@ module.run(['$templateCache', function($templateCache) {
 })();
 
 
-
 (function(module) {
 try {
   module = angular.module('templates');
@@ -23,3 +22,4 @@ module.run(['$templateCache', function($templateCache) {
     '<h1>A</h1>');
 }]);
 })();
+

@@ -1,1 +1,1 @@
-//ERROR: Cyclic dependency in source/strangeloop.js"
+//[lingon] ERROR: Cyclic dependency in "source/strangeloop.js"

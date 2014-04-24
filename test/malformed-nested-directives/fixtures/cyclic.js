@@ -1,1 +1,2 @@
-//ERROR: Cyclic dependency in source/cyclic.js"
+//[lingon] ERROR: Cyclic dependency in "source/cyclic.js"
+

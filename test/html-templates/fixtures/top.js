@@ -11,7 +11,6 @@ module.run(['$templateCache', function($templateCache) {
 })();
 
 
-
 (function(module) {
 try {
   module = angular.module('templates');

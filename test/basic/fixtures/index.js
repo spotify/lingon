@@ -1,5 +1,4 @@
 var thirdPartyString = "Party time!";
-
 var anotherThirdPartyString = "Yes!";
 
 function hello() {
