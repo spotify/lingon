@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.8.0
+
+* Feature: Support for nested include directives in source files
+* Improvement: Major refactor of the lingon core: Cleanup & increased readability of code.
+* Improvement: More tests
+
 ## Version 0.7.0
 
 * Feature: Tasks can now be chained
