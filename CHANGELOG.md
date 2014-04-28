@@ -1,8 +1,12 @@
 # Changelog
 
+## Version 0.8.2
+
+* Fix: Race condition in processor callbacks
+
 ## Version 0.8.1
 
-* Hid debug log statement
+* Fix: Hide debug log statement
 
 ## Version 0.8.0
 
