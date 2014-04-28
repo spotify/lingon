@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.8.1
+
+* Hid debug log statement
+
 ## Version 0.8.0
 
 * Feature: Support for nested include directives in source files
