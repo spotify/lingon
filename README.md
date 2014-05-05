@@ -9,11 +9,6 @@ A minimal static site generator inspired by Middleman and Sprockets. Lingon is c
 This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
 We are specifically targeting the features that are useful when building single page JS apps. If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-**Namechange**
-
-This project was previously known as Orangejuice.<br />
-It is still very much alive, but with the new shiny name: Lingon.
-
 **Features**
 
 * Powered by node streams & compatible with many gulp plugins
@@ -21,11 +16,10 @@ It is still very much alive, but with the new shiny name: Lingon.
 * Use Gulp plugins as Sprockets-like file processors
 * Built in http server (rebuilds files on browser refresh, no flaky fs watch).
 * Out of the box support for: less and ejs
-* No DSL, the lingon.js file is JavaScript
 
-## How is it different from Gulp, Grunt, X?
+## How is it different from Make, Gulp, Grunt, X?
 
-Lingon favors convention over configuration. For example, Grunt & Gulp provides powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
+Lingon favors convention over configuration. For example, Grunt & Gulp provide powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
 
 Lingon is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed based on their filename extensions.
 
