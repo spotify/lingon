@@ -71,7 +71,7 @@ lingon.preProcessor('ngt', function() {
   return ngHtml2js({ base: 'source' })
 });
 
-// extending the processors for a file type and limiting it to files that don not contain ".min" in their path
+// extending the processors for a file type and limiting it to files that does not contain ".min" in their path
 lingon.postProcessor('js').add(/^((?!\.min).)*$/, function() {
   var processors = [];
 
