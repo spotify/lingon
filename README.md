@@ -65,6 +65,9 @@ var uglify = require('gulp-uglify');
 lingon.sourcePath = 'source';
 lingon.buildPath = 'build';
 
+// allowing the usage of directives (includes) in additional file types
+lingon.validDirectiveFileTypes.push('.html', '.ngt');
+
 // registering a processor in the short syntax (overwrites previous ones for the file type)
 // long form would be: lingon.preProcessor('ngt').set(name, factory)
 lingon.preProcessor('ngt', function() {
