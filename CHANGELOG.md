@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.9.0
+  
+* Feature: Consistent renaming of filename extensions. File extensions are being rewritten based on a map of source -> destination files. This map includes some sane defaults (less -> css, etc) but can also be extended through a new api: lingon.extensionRewriter.
+* Feature: Server mode does not compile everything at startup. Instead, east request triggers a build.
+
 ## Version 0.8.2
 
 * Fix: Race condition in processor callbacks
