@@ -2,4 +2,7 @@
 
 var lingon = require('../../lib/boot');
 
-lingon.rewriteExtension("boo", "foo");
+lingon.extensionRewriter.set("boo", "foo");
+
+lingon.extensionRewriter.set("normal", "rewritten");
+lingon.extensionRewriter.remove("normal");

@@ -19,11 +19,17 @@ setup() {
 
   # Check that correct output files exist
   [ -f 'build/index.html' ]
+  [ -f 'build/template.js' ]
 }
 
 @test "rewrite-extensions project: custom extensions rewrite properly" {
   # Check that correct output files exist
   [ -f 'build/a/b/c.foo' ]
   [ -f 'build/test.foo' ]
+}
+
+@test "rewrite-extensions project: does not rewrite deleted rules" {
+  [ -f 'build/deleted.normal' ]
+  [ ! -f 'build/deleted.rewritten' ]
 }
 
