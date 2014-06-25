@@ -33,3 +33,7 @@ setup() {
   [ ! -f 'build/deleted.rewritten' ]
 }
 
+@test "rewrite-extensions project: does not rewrite files without registered processor" {
+  [ -f 'build/registered.normal' ]
+  [ ! -f 'build/registered.rewritten' ]
+}
