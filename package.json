@@ -54,7 +54,8 @@
     "minimatch": "0.2.14"
   },
   "devDependencies": {
-    "lingon-ng-html2js": "~0.1.6"
+    "lingon-ng-html2js": "~0.1.6",
+    "gulp-markdown": "0.1.2"
   },
   "keywords": [
     "middleman",
