@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.0.0
+
+* Feature: Inline includes in EJS/HTML files. The lingon inline directive can be used inside an inline HTML comment.
+* Breaking Change in EJS rendering: The task specific "config" object has been replaced with a global "context" object. All properties put on this object will be available inside the EJS execution context.
+
 ## Version 0.9.1
 
 * Fix: The orderedMergeStream would not properly wait for multi-file data events before processing the outgoing data queue. This lead to a race-condition that could affect the order of file concatenation. 
