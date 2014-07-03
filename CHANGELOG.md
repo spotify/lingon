@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.3
+
+* Bug fix: The console output was showing absolute paths in server mode. Changed it back to relative paths.
+
 ## Version 1.0.2
 
 * Critical fix: The performance enhancement introduced a critical bug that was not caught by the test suite. Source->Build mapping did not work and filenames that were transformed were not found by the server.
