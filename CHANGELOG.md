@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.2
+
+* Critical fix: The performance enhancement introduced a critical bug that was not caught by the test suite. Source->Build mapping did not work and filenames that were transformed were not found by the server.
+
 ## Version 1.0.1
 
 * Performance enhancements: Optimized how Lingon searches for a single source file, when requested in server mode. Also removed some old unnecessary code that was slowing down startup time for lingon server.
