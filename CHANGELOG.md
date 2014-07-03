@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.1
+
+* Performance enhancements: Optimized how Lingon searches for a single source file, when requested in server mode. Also removed some old unnecessary code that was slowing down startup time for lingon server.
+
 ## Version 1.0.0
 
 * Feature: Inline includes in EJS/HTML files. The lingon inline directive can be used inside an inline HTML comment.
