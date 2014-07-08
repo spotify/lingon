@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Bug fix: Prevent warning message from express dependency in server mode
+
 ## Version 1.0.3
 
 * Bug fix: The console output was showing absolute paths in server mode. Changed it back to relative paths.
