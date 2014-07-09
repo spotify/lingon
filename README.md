@@ -3,22 +3,24 @@
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
 
-A minimal static site generator inspired by Middleman and compatible with gulp plugins.
+Lingon is a minimal "static site generator" with a focus on developer happiness.
 
 ## Overview
-Lingon is a minimal port of [middleman](http://middlemanapp.com) to the node.js ecosystem.
-We are specifically targeting the features that are useful when building single page JS apps. If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-**Features**
+Lingon is a tool for building static web apps. Our thesis is: following a few conventions is better than writing a lot of configuration. We've borrowed this idea from [middleman](http://middlemanapp.com) and Sprockets. If you already know these tools you'll feel right at home with Lingon.
 
-* Powered by node streams & compatible with gulp plugins
+Under the hood we use Gulp plugins to do the heavy lifting, leveraging an existing community of great plugins.
+
+**Key features**
+
+* Minimal, does not ship with bloat.
 * Sprockets-like "include" directive for file concatenation
 * Uses Gulp plugins as Sprockets-like file processors
 * Built in http server (rebuilds files on browser refresh, no flaky fs watch).
 * Out-of-the box support for Less, EJS & Markdown
 * No DSL - Lingon is configured using plain JavaScript
 
-## Get it
+## Install
 
 Add "lingon" to your package.json or:
 ```
@@ -70,7 +72,6 @@ Start the server on a custom port:
 	
 	$ ./lingon.js server -p 1111
 
-
 ## Documentation
 
 ### [Usage examples](usage)
@@ -96,6 +97,11 @@ Run the [bats](https://github.com/sstephenson/bats) e2e tests:
 ```
 $ ./tests.sh
 ```
+
+## Contributions
+
+We'd love some help!<br />
+Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 Licensed under the MIT license.
