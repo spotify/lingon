@@ -32,7 +32,11 @@ Ok, so now you can write some code. Have fun!
 
     ./test.sh
 
-### 7. Push to your fork and [submit a pull request][pr].
+### 7. Briefly describe your change in the CHANGELOG.md file under HEAD
+
+This makes sure we announce the change in the next release.
+
+### 8. Push to your fork and [submit a pull request][pr].
 
 [pr]: https://github.com/jpettersson/lingon/compare/
 
