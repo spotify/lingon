@@ -2,34 +2,37 @@
 
 We love pull requests. Here's a quick guide.
 
-### Fork, then clone the repo:
+### 1. Fork, then clone the repo:
 
     git clone git@github.com:jpettersson/lingon.git
 
-### Install dependencies:
+### 2. Install dependencies:
 
     npm install
 
-### Make sure the tests pass:
+### 3. Make sure the tests pass:
 
 You want to be sure that everything is A-OK before starting work on your feature.
 
     ./test.sh
 
 
-### Write Documentation
+### 4. Write Documentation
 
-The Lingon contributors practise README driven development. Add your changes to the documentation before writing code. This will put you in a happy place where you contemplate about how real users will interact with your feature. 
+The Lingon contributors practise README driven development. Add your changes to the documentation before writing code. This will put you in a happy place where you contemplate about how real users will interact with your change. 
 
-### Write your feature
+If your change affects the stable Lingon API, update ``docs/API.md``<br />
+If your change affects how a user interacts with Lingon, update ``docs/USAGE.md``
+
+### 5. Write your feature
 
 Ok, so now you can write some code. Have fun!
 
-### Add tests for your feature. Make the tests pass:
+### 6. Add tests for your feature. Make the tests pass:
 
     ./test.sh
 
-Push to your fork and [submit a pull request][pr].
+### 7. Push to your fork and [submit a pull request][pr].
 
 [pr]: https://github.com/jpettersson/lingon/compare/
 
