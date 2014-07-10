@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Bug fix: The concat plugin could corrupt the encoding of a blob file, now the plugin runs only when necessary.
 * Bug fix: Prevent warning message from express dependency in server mode
 
 ## Version 1.0.3
@@ -23,10 +24,10 @@
 
 ## Version 0.9.1
 
-* Fix: The orderedMergeStream would not properly wait for multi-file data events before processing the outgoing data queue. This lead to a race-condition that could affect the order of file concatenation. 
+* Fix: The orderedMergeStream would not properly wait for multi-file data events before processing the outgoing data queue. This lead to a race-condition that could affect the order of file concatenation.
 
 ## Version 0.9.0
-  
+
 * Feature: Consistent renaming of filename extensions. File extensions are being rewritten based on a map of source -> destination files. This map includes some sane defaults (less -> css, etc) but can also be extended through a new api: lingon.extensionRewriter.
 * Feature: Server mode does not compile everything at startup. Instead, east request triggers a build.
 
