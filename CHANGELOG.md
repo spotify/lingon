@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 1.0.4
 
 * Bug fix: The concat plugin could corrupt the encoding of a blob file, now the plugin runs only when necessary.
 * Bug fix: Prevent warning message from express dependency in server mode
