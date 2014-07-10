@@ -21,15 +21,16 @@ setup() {
   [ -f 'build/index.html' ]
   [ -f 'build/index.js' ]
   [ -f 'build/index.css' ]
+  [ -f 'build/image.png' ]
   [ -f 'build/lib/lib.js' ]
   [ ! -d 'build/_vendor' ]
 }
 
 @test "basic project: can concatenate js files" {
   # Compare the built index.js file to a reference
-  # Success if diff exited with status 0 
+  # Success if diff exited with status 0
 
-  diff build/index.js fixtures/index.js  
+  diff build/index.js fixtures/index.js
   [ $? -eq 0 ]
 }
 
@@ -38,7 +39,7 @@ setup() {
   if [ -d './tmp' ]; then
     rm -r ./tmp 2> /dev/null
   fi
-  
+
   # Create tmp/
   mkdir ./tmp
 
@@ -53,10 +54,11 @@ setup() {
   # Get some files
   server="http://localhost:4567"
   download="curl --silent -o"
-  
+
   ${download} tmp/index.html $server/index.html
   ${download} tmp/index.js $server/index.js
   ${download} tmp/index.css $server/index.css
+  ${download} tmp/image.png $server/image.png
   ${download} tmp/lib.js $server/lib/lib.js
 
   # Terminate server
@@ -65,11 +67,14 @@ setup() {
   # Did we get everything?
   diff tmp/index.html build/index.html
   [ $? -eq 0 ]
-  
+
   diff tmp/index.js build/index.js
   [ $? -eq 0 ]
 
   diff tmp/index.css build/index.css
+  [ $? -eq 0 ]
+
+  diff tmp/image.png build/image.png
   [ $? -eq 0 ]
 
   diff tmp/lib.js build/lib/lib.js
