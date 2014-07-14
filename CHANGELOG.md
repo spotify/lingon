@@ -1,11 +1,33 @@
 # Changelog
 
+## Version 1.0.4
+
+* Bug fix: The concat plugin could corrupt the encoding of a blob file, now the plugin runs only when necessary.
+* Bug fix: Prevent warning message from express dependency in server mode
+
+## Version 1.0.3
+
+* Bug fix: The console output was showing absolute paths in server mode. Changed it back to relative paths.
+
+## Version 1.0.2
+
+* Critical fix: The performance enhancement introduced a critical bug that was not caught by the test suite. Source->Build mapping did not work and filenames that were transformed were not found by the server.
+
+## Version 1.0.1
+
+* Performance enhancements: Optimized how Lingon searches for a single source file, when requested in server mode. Also removed some old unnecessary code that was slowing down startup time for lingon server.
+
+## Version 1.0.0
+
+* Feature: Inline includes in EJS/HTML files. The lingon inline directive can be used inside an inline HTML comment.
+* Breaking Change in EJS rendering: The task specific "config" object has been replaced with a global "context" object. All properties put on this object will be available inside the EJS execution context.
+
 ## Version 0.9.1
 
-* Fix: The orderedMergeStream would not properly wait for multi-file data events before processing the outgoing data queue. This lead to a race-condition that could affect the order of file concatenation. 
+* Fix: The orderedMergeStream would not properly wait for multi-file data events before processing the outgoing data queue. This lead to a race-condition that could affect the order of file concatenation.
 
 ## Version 0.9.0
-  
+
 * Feature: Consistent renaming of filename extensions. File extensions are being rewritten based on a map of source -> destination files. This map includes some sane defaults (less -> css, etc) but can also be extended through a new api: lingon.extensionRewriter.
 * Feature: Server mode does not compile everything at startup. Instead, east request triggers a build.
 
