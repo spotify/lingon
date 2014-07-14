@@ -48,7 +48,7 @@ lingon.sourcePath = "/some/other/path";
 lingon.buildPath = "/dev/null";
 ```
 
-Check out the [usage documentation](usage) for a walkthrough of all features.
+Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
 
 ## Run Lingon
 
