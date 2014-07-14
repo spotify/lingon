@@ -1,6 +1,6 @@
 # Lingon usage
 
-This document describes real use cases for Lingon. It starts by covering the basics and proceeds to more advanced uses.
+This document describes real use cases for Lingon. It starts by covering the basics and proceeds to more advanced uses. The usage documentation is work in progress. Please help out by documenting your use cases in a PR. Thanks!
 
 ## Build a basic project
 
