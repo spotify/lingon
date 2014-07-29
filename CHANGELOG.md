@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.1.0
+
+* Feature: Define a catch-all file to serve instead of displaying a 404 message. Useful when working with html5 History API.
+
 ## Version 1.0.4
 
 * Bug fix: The concat plugin could corrupt the encoding of a blob file, now the plugin runs only when necessary.
