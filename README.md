@@ -3,21 +3,86 @@
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
 
-A minimal static site generator inspired by Middleman and Sprockets. Lingon is compatible with some gulp plugins.
+Lingon is a minimal "static site generator" with a focus on developer happiness.
 
 ## Overview
-This project is an attempt to port a subset of [middleman](http://middlemanapp.com) to the node.js ecosystem.
-We are specifically targeting the features that are useful when building single page JS apps. If you already love middleman and Sprockets but want/need to use node.js, this might be interesting to you.
 
-**Features**
+Lingon is a tool for building static web apps. Our thesis is: following a few conventions is better than writing a lot of configuration. We've borrowed this idea from [middleman](http://middlemanapp.com) and Sprockets. If you already know these tools you'll feel right at home with Lingon.
 
-* Powered by node streams & compatible with many gulp plugins
+Under the hood we use Gulp plugins to do the heavy lifting, leveraging an existing community of great plugins.
+
+**Key features**
+
+* Minimal, does not ship with bloat.
 * Sprockets-like "include" directive for file concatenation
-* Use Gulp plugins as Sprockets-like file processors
+* Uses Gulp plugins as Sprockets-like file processors
 * Built in http server (rebuilds files on browser refresh, no flaky fs watch).
-* Out of the box support for: less and ejs
+* Out-of-the box support for Less, EJS & Markdown
+* No DSL - Lingon is configured using plain JavaScript
 
-## How is it different from Make, Gulp, Grunt, X?
+## Install
+
+Add "lingon" to your package.json or:
+```
+$ npm install lingon
+```
+
+## Prepare your project
+
+Create a "lingon.js" file in the root of the project and make it executable: 
+
+	$ chmod +x lingon.js
+
+This file is used to both configure and run Lingon. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
+
+```JavaScript
+var lingon = require("lingon");
+```
+
+This will allow Lingon to build and serve a basic web applications. By default, Lingon will look for source files in `./source` and put build files in `./build`. These defaults can be changed like this: 
+
+```JavaScript
+var lingon = require("lingon");
+
+lingon.sourcePath = "/some/other/path";
+lingon.buildPath = "/dev/null";
+```
+
+Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
+
+## Run Lingon
+
+Show help:
+	
+	$ ./lingon.js -h
+
+Build once and quit:
+
+	$ ./lingon.js build
+
+Clean and build:
+
+	$ ./lingon.js clean build
+
+Start the server:
+	
+	$ ./lingon.js
+
+Start the server on a custom port:
+	
+	$ ./lingon.js server -p 1111
+
+## Documentation
+
+### [Usage examples](usage)
+### [API Reference]()
+
+## Project templates
+
+### [Angular.js application](https://github.com/jpettersson/lingon-ng-template)
+
+
+## How does it relate to Make, Gulp, Grunt, X?
 
 Lingon favors convention over configuration. For example, Grunt & Gulp provide powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
 
@@ -25,97 +90,6 @@ Lingon is inspired by Sprockets and uses a convention approach: A set of simple 
 
 Example: "index.html.ejs" will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Lingon something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
 
-## Get it
-
-#### Locally in your project
-```
-$ npm install lingon # Or add lingon to your package.json file
-```
-
-#### Command line interface
-Don't want to execute the lingon.js file directly? Would you prefer a cli?<br />
-Check out the experimental [lingon-cli](http://github.com/jpettersson/lingon-cli)
-
-## Configure it
-Your project should have a lingon.js file which is used to configure and run Lingon.
-
-Here's a minimal lingon.js file with comments:
-
-```JavaScript
-#!/usr/bin/env node
-
-var lingon = require('lingon');
-
-// The directory with your source tree, relative to the lingon.js file.
-lingon.sourcePath = 'source';
-
-// The directory you want to build to, relative to the lingon.js file.
-lingon.buildPath = 'build';
-```
-
-Here's another lingon.js file that uses a lingon plugin to compile html files into the angular template cache. In this case the The files are named .html.ngt so we register the processor for the 'ngt' file ending. Additionally JavaScript files will be  post-processed by the uglify gulp plugin when executing the `build` task.
-
-```JavaScript
-#!/usr/bin/env node
-
-var lingon = require('lingon');
-var ngHtml2js = require('lingon-ng-html2js');
-var uglify = require('gulp-uglify');
-
-lingon.sourcePath = 'source';
-lingon.buildPath = 'build';
-
-// allowing the usage of directives (includes) in additional file types
-lingon.validDirectiveFileTypes.push('.html', '.ngt');
-
-// registering a processor in the short syntax (overwrites previous ones for the file type)
-// long form would be: lingon.preProcessor('ngt').set(name, factory)
-lingon.preProcessor('ngt', function() {
-  return ngHtml2js({ base: 'source' })
-});
-
-// extending the processors for a file type and limiting it to files that does not contain ".min" in their path
-lingon.postProcessor('js').add(/^((?!\.min).)*$/, function() {
-  var processors = [];
-
-  if(lingon.task == 'build') {
-    processors.push(
-      uglify({ outSourceMap: true })
-    );
-  }
-
-  return processors;
-});
-```
-
-## Run it
-
-```
-Make your lingon.js file executable
-$ chmod +x lingon.js
-
-Show help:
-$ ./lingon.js -h
-
-Build once and quit:
-$ ./lingon.js build
-
-Clean and build:
-$ ./lingon.js clean build
-
-Start the server:
-$ ./lingon.js
-
-Start the server on a custom port:
-$ ./lingon.js server -p 1111
-```
-
-## What about examples?
-
-We've made an Angular.js template project that builds with Lingon.<br />
-It's the best reference to how Lingon works right now:
-
-https://github.com/jpettersson/lingon-ng-template
 
 ## Test it
 
@@ -123,6 +97,11 @@ Run the [bats](https://github.com/sstephenson/bats) e2e tests:
 ```
 $ ./tests.sh
 ```
+
+## Contributions
+
+We'd love some help!<br />
+Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 Licensed under the MIT license.
