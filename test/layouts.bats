@@ -18,5 +18,11 @@ setup() {
   diff build/home.html fixtures/home.html
   [ $? -eq 0 ]
 
+
+}
+
+@test "layouts: md files can render inside layouts" {
+  diff build/article.html fixtures/article.html
+  [ $? -eq 0 ]
 }
 
