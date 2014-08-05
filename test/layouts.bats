@@ -26,3 +26,8 @@ setup() {
   [ $? -eq 0 ]
 }
 
+@test "layouts: layouts can be referenced with absolute path (relative to sourcePath)" {
+  diff build/sub/folder/absolute.html fixtures/sub/folder/absolute.html
+  [ $? -eq 0 ]
+}
+
