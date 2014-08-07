@@ -145,7 +145,7 @@ The template uses a lingon layout directive to define a template to render insid
 
 ## Render a md file inside a html template
 
-Follow the above example, but change the home.html template to a markdown document
+Easy! Follow the above example, but change the home.html template to a markdown document.
 
 **File: source/home.md**
 
