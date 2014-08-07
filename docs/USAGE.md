@@ -64,11 +64,38 @@ To start the built in http server, run:
 
 The server "task" is the default in Lingon, so just running ``./lingon.js`` will also start the server.
 
+## Render EJS templates
 
+Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module. 
 
+Lingon can forward a "context" object to the EJS renderer that allows you to pass dynamic data to the ejs templates. All fields on the context object will be available for all templates during build.
 
-## Build EJS templates
+**Example: lingon.js**
 
-## Build LESS
+```JavaScript
+var lingon = require('lingon');
+lingon.context.name = "bob";
 
-## Deploy a build using the git:deploy plugin
+```
+
+**Example: index.ejs**
+
+```html
+<html>
+  <%= name %>
+</html>
+```
+
+#### Different values during build & server
+It's possible to pass different data to the server and build tasks by overriding data in the `serverConfigure` event. This way the title will be 'bob' during build and 'alice' when the server has started.
+
+```JavaScript
+var lingon = require('../../lib/boot');
+
+lingon.context.name = "bob";
+
+lingon.bind('serverConfigure', function() {
+  lingon.context.name = "alice";
+});
+
+```
