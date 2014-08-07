@@ -52,11 +52,11 @@
     "event-emitter": "^0.2.2",
     "rimraf": "^2.2.6",
     "minimatch": "0.2.14",
-    "resumer": "*"
+    "resumer": "*",
+    "gulp-markdown": "0.1.2"
   },
   "devDependencies": {
-    "lingon-ng-html2js": "~0.1.6",
-    "gulp-markdown": "0.1.2"
+    "lingon-ng-html2js": "~0.1.6"
   },
   "keywords": [
     "middleman",
