@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.0
+
+* Feature: Basic support for ejs layouts. Use a yield directive to wrap a rendered html file inside another template.
+
 ## Version 1.1.0
 
 * Feature: Define a catch-all file to serve instead of displaying a 404 message. Useful when working with html5 History API.
