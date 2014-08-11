@@ -4,11 +4,11 @@
 # Before each spec
 setup() {
   # cd to the basic test project
-  CWD='test/context'
+  CWD='test/global'
   cd $CWD
 }
 
-@test "context: variables accessible from ejs" {
+@test "global: variables accessible from ejs" {
   # Remove existing build/
   if [ -d './build' ]; then
     rm -r ./build 2> /dev/null
@@ -24,7 +24,7 @@ setup() {
   [ $? -eq 0 ]
 }
 
-@test "context: it's possible to override variables per task" {
+@test "global: it's possible to override variables per task" {
   # Remove existing tmp/
   if [ -d './tmp' ]; then
     rm -r ./tmp 2> /dev/null
