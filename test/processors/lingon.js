@@ -14,6 +14,7 @@ var createProcessor = function(type) {
   });
 };
 
+// pre processors
 oj.preProcessor('simplesyntax', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
@@ -34,8 +35,13 @@ oj.preProcessor('multiplesyntax', function(params) {
   ];
 });
 
+oj.preProcessor('orderedsyntax', function(params) {
+  return createProcessor('ordered pre');
+});
 
 
+
+// post processors
 oj.postProcessor('simplesyntax').set(function(params) {
   return createProcessor('simple postprocessor that will be overwritten ');
 });
@@ -59,5 +65,18 @@ oj.postProcessor('multiplesyntax').add(function(params) {
   return [
     createProcessor('multiple2 post'),
     createProcessor('multiple3 post')
+  ];
+});
+
+oj.postProcessor('orderedsyntax').push(function(params) {
+  return createProcessor('ordered1 post');
+});
+oj.postProcessor('orderedsyntax').unshift(function(params) {
+  return createProcessor('ordered2 post');
+});
+oj.postProcessor('orderedsyntax').add(function(params) {
+  return [
+    createProcessor('ordered3 post'),
+    createProcessor('ordered4 post')
   ];
 });

@@ -22,6 +22,7 @@ setup() {
   [ -f 'build/matching.simplesyntax' ]
   [ -f 'build/index.alternativesyntax' ]
   [ -f 'build/index.multiplesyntax' ]
+  [ -f 'build/index.orderedsyntax' ]
 }
 
 @test "processors project: custom processors produce correct output" {
@@ -35,6 +36,9 @@ setup() {
   [ $? -eq 0 ]
 
   diff build/index.multiplesyntax fixtures/index.multiplesyntax
+  [ $? -eq 0 ]
+
+  diff build/index.orderedsyntax fixtures/index.orderedsyntax
   [ $? -eq 0 ]
 
 }
