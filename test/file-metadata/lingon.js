@@ -5,17 +5,14 @@ var lingon = require('../../lib/boot');
 var ejs = require('gulp-ejs');
 var streamHelper = require('../../lib/utils/stream');
 
-console.log(lingon.preProcessor('ejs'))
-
-lingon.preProcessor('ejs').unshift(function(context) {
+lingon.preProcessor('ejs').unshift(function(context, global) {
   return es.map(function(file, cb) {
-      if(!context.metadata) {
-        context.metadata = {};
+      if(!global.metadata) {
+        global.metadata = {};
       }
-      
-      console.log('metadata: ', file.path)
 
-      context.metadata[file.path] = "Hello";
+      global.metadata[file.path] = "Hello";
+      console.log(context, global)
       cb(null, file);
     });
 });
