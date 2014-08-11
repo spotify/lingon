@@ -1,4 +1,4 @@
-//= layout '_layouts/index.ejs'
+<!-- lingon: layout '_layouts/index.ejs' -->
 
 ## Hello
 

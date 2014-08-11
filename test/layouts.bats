@@ -17,8 +17,6 @@ setup() {
   # Check that correct output files exist
   diff build/home.html fixtures/home.html
   [ $? -eq 0 ]
-
-
 }
 
 @test "layouts: md files can render inside layouts" {
@@ -31,3 +29,12 @@ setup() {
   [ $? -eq 0 ]
 }
 
+@test "layouts: layouts can nest" {
+  diff build/nested.html fixtures/nested.html
+  [ $? -eq 0 ]
+}
+
+@test "layouts: layouts can nest n times" {
+  diff build/two-levels.html fixtures/two-levels.html
+  [ $? -eq 0 ]
+}

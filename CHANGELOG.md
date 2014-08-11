@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Feature: Added support for nested template layouts.
+
 ## Version 1.2.0
 
 * Feature: Basic support for ejs layouts. Use a yield directive to wrap a rendered html file inside another template.
