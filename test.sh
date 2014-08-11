@@ -5,4 +5,12 @@ git submodule init
 git submodule update
 
 # Run all bats tests
-./test/vendor/bats/bin/bats test/
+
+if [ $1 ]; 
+then
+  target=$1
+else
+  target='test/'
+fi
+
+./test/vendor/bats/bin/bats $target
