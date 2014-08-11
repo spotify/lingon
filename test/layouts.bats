@@ -29,7 +29,12 @@ setup() {
   [ $? -eq 0 ]
 }
 
-@test "layouts: layouts can be nested" {
+@test "layouts: layouts can nest" {
   diff build/nested.html fixtures/nested.html
+  [ $? -eq 0 ]
+}
+
+@test "layouts: layouts can nest n times" {
+  diff build/two-levels.html fixtures/two-levels.html
   [ $? -eq 0 ]
 }
