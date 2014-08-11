@@ -12,7 +12,6 @@ lingon.preProcessor('ejs').unshift(function(context, global) {
       }
 
       global.metadata[file.path] = "Hello";
-      console.log(context, global)
       cb(null, file);
     });
 });
