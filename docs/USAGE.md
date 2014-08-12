@@ -169,7 +169,7 @@ lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
 
 #### Register processors
 
-Use `lingon.preProcessor('<FILETYPE>')` and `lingon.postProcessor('<FILETYPE>')` to access lingon's processors, on the result we can then invoke `push`, `unshift` and `set` to modify the processors for a given file type.
+Use `lingon.preProcessor('<FILETYPE>', fn)` and `lingon.postProcessor('<FILETYPE>', fn)` to access lingon's processors, on the result we can then invoke `push`, `unshift` and `set` to modify the processors for a given file type.
 
 The argument for these methods is a single factory function that gets passed to configuration variables: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
 
@@ -204,6 +204,7 @@ lingon.postProcessor('less').set(function(context, globals) {
 ```
 
 #### Register conditional processor
+
 Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file names that meet this regular expression will register the processor.
 
 Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
@@ -224,4 +225,41 @@ lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
 
   return processors;
 });
+```
+
+#### Register tasks
+Use `lingon.registerTask('<TASKNAME>', fn, infoObject);` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
+
+```js
+var lingon = require('lingon');
+var imagemin  = require('gulp-imagemin');
+var pngcrush  = require('imagemin-pngcrush');
+
+// add lingon task to optimize images directly in the source folder
+// execute task via "lingon imagemin"
+lingon.registerTask('imagemin', function(callback) {
+  lingon.sourcePath += '/images';
+  lingon.buildPath = lingon.sourcePath;
+
+  var optimizeImages = function(params) {
+    return imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngcrush()]
+    });
+  };
+  lingon.postProcessor('jpg').add(optimizeImages);
+  lingon.postProcessor('jpeg').add(optimizeImages);
+  lingon.postProcessor('png').add(optimizeImages);
+  lingon.postProcessor('gif').add(optimizeImages);
+  lingon.postProcessor('svg').add(optimizeImages);
+
+  lingon.build(callback, null);
+}, {
+  message: 'Optimize images (directly in the source folder!)',
+  arguments: {
+    // 'v': 'Run in verbose mode' // this argument is made up for example purposes
+  }
+});
+
 ```
