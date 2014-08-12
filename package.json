@@ -54,7 +54,8 @@
     "minimatch": "0.2.14",
     "resumer": "*",
     "gulp-markdown": "0.1.2",
-    "merge": "1.1.3"
+    "merge": "1.1.3",
+    "q": "2.0.0"
   },
   "devDependencies": {
     "lingon-ng-html2js": "~0.1.6"
