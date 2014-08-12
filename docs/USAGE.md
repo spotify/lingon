@@ -204,7 +204,7 @@ lingon.postProcessor('less').set(function(context, globals) {
 ```
 
 #### Register conditional processor
-Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file that meet this regular expression will register the processor, you can use the full path relative from the root folder here.
+Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file names that meet this regular expression will register the processor.
 
 Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
 
@@ -212,6 +212,7 @@ Additionally some processors are only needed in certain tasks, in that case we c
 var lingon = require('lingon');
 var uglify = require('gulp-uglify');
 
+// only process files that do not contain ".min" in their name
 lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
   var processors = [];
 
