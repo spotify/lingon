@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 1.3.0
 
 * Feature: Allow unshifting of processors and not only pushing
 * Feature: Added support for nested template layouts.
