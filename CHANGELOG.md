@@ -2,6 +2,7 @@
 
 ## HEAD
 
+* Feature: Allow unshifting of processors and not only pushing
 * Feature: Added support for nested template layouts.
 
 ## Version 1.2.0
