@@ -155,7 +155,7 @@ Easy! Follow the above example, but change the home.html template to a Markdown 
 This is a website.
 ```
 
-## Advanced Lingon settings
+## Advanced Lingon configurations
 
 #### Allowing the usage of directives (includes) in additional file types
 If you want to use directives (includes) in your own custom file extensions you can just add them.
