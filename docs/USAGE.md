@@ -232,8 +232,8 @@ Use `lingon.registerTask('<TASKNAME>', fn, infoObject);` to register a new task.
 
 ```js
 var lingon = require('lingon');
-var imagemin  = require('gulp-imagemin');
-var pngcrush  = require('imagemin-pngcrush');
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
 
 // add lingon task to optimize images directly in the source folder
 // execute task via "lingon imagemin"
