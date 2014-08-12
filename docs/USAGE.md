@@ -171,7 +171,7 @@ lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
 
 Use `lingon.preProcessor('<FILETYPE>')` and `lingon.postProcessor('<FILETYPE>')` to access lingon's processors, on the result we can then invoke `push`, `unshift` and `set` to modify the processors for a given file type.
 
-The argument for these methods is a single function that gets passed to configuration variables: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
+The argument for these methods is a single factory function that gets passed to configuration variables: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
 
 This function then returns an array of stream modifiers that will be piped one after another to their respective files.
 
@@ -200,5 +200,27 @@ lingon.postProcessor('less').set(function(context, globals) {
   return [
     less()
   ];
+});
+```
+
+#### Register conditional processor
+Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file that meet this regular expression will register the processor, you can use the full path relative from the root folder here.
+
+Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
+
+```js
+var lingon = require('lingon');
+var uglify = require('gulp-uglify');
+
+lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
+  var processors = [];
+
+  if(lingon.task == 'build') {
+    processors.push(
+      uglify({ outSourceMap: true })
+    );
+  }
+
+  return processors;
 });
 ```
