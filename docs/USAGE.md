@@ -228,7 +228,7 @@ lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
 ```
 
 #### Register tasks
-Use `lingon.registerTask('<TASKNAME>', fn, infoObject);` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
+Use `lingon.registerTask('<TASKNAME>', fn, infoObject)` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
 
 ```js
 var lingon = require('lingon');
