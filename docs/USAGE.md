@@ -15,7 +15,7 @@ There's a lingon.js file and a source directory containing an index.html file.
 		index.html
 
 #### lingon.js
-```JavaScript
+```js
 var lingon = require('lingon');
 ```
 
@@ -26,7 +26,7 @@ In the lingon.js file we import the lingon module. When lingon is imported it wi
 
 The HTML file contains the following: 
 
-```HTML
+```html
 <html>
   <body>
     <h1>Hello Lingon!</h1>
@@ -72,10 +72,10 @@ Lingon can forward a "context" object to the EJS renderer that allows you to pas
 
 **Example: lingon.js**
 
-```JavaScript
+```js
 var lingon = require('lingon');
-lingon.context.name = "bob";
 
+lingon.context.name = "bob";
 ```
 
 **Example: index.ejs**
@@ -89,15 +89,14 @@ lingon.context.name = "bob";
 #### Different values during build & server
 It's possible to pass different data to the server and build tasks by overriding data in the `serverConfigure` event. This way the title will be 'bob' during build and 'alice' when the server has started.
 
-```JavaScript
-var lingon = require('../../lib/boot');
+```js
+var lingon = require('lingon');
 
 lingon.context.name = "bob";
 
 lingon.bind('serverConfigure', function() {
   lingon.context.name = "alice";
 });
-
 ```
 
 # Render templates inside layouts
@@ -118,7 +117,7 @@ This example has the following structure:
 			index.html
 		home.html
 
-####File: source/_layouts/index.html
+#### File: source/_layouts/index.html
 
 The layout is a regular html file that defines an inline lingon yield directive. The yield directive will be replaced with the contents of the template. 
 
@@ -133,7 +132,7 @@ The layout is a regular html file that defines an inline lingon yield directive.
 </html>
 ```
 
-####File: source/home.html
+#### File: source/home.html
 
 The template uses a lingon layout directive to define a template to render inside. The path to the template can be either relative from the template file or absolute from the lingon sourcePath.
 
@@ -145,30 +144,122 @@ The template uses a lingon layout directive to define a template to render insid
 
 ## Render a md file inside a html template
 
-Easy! Follow the above example, but change the home.html template to a markdown document.
+Easy! Follow the above example, but change the home.html template to a Markdown document.
 
 **File: source/home.md**
 
-```Markdown
+```markdown
 <!-- lingon: layout '_layouts/index.ejs' -->
 # Welcome
 
 This is a website.
 ```
 
+## Advanced Lingon configurations
 
+#### Allowing the usage of directives (includes) in additional file types
+If you want to use directives (includes) in your own custom file extensions you can just add them.
+By default the following file types are registered: `['.js', '.less', '.css', '.ejs', '.html', '.md']`
 
+```js
+var lingon = require('lingon');
 
+lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
+```
 
+#### Register processors
 
+Use `lingon.preProcessor('<FILETYPE>', fn)` and `lingon.postProcessor('<FILETYPE>', fn)` to access lingon's processors, on the result we can then invoke `push`, `unshift` and `set` to modify the processors for a given file type.
 
+The argument for these methods is a single factory function that gets passed to configuration variables: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
 
+This function then returns an array of stream modifiers that will be piped one after another to their respective files.
 
+```js
+var lingon = require('lingon');
+var ngHtml2js = require('lingon-ng-html2js');
+var uglify = require('gulp-uglify');
+var less = require('gulp-less');
 
+// registering a new preprocessor and adding it to the end of the file type's processor chain
+lingon.preProcessor('ngt').push(function(context, globals) {
+  return [
+    ngHtml2js({ base: 'source' })
+  ];
+});
 
+// registering a new postprocessor and adding it to the beginning of the file type's processor chain
+lingon.postProcessor('js').unshift(function(context, globals) {
+  return [
+    uglify({ outSourceMap: true })
+  ];
+});
 
+// registering a new postprocessor and overwriting any existing ones for the file type
+lingon.postProcessor('less').set(function(context, globals) {
+  return [
+    less()
+  ];
+});
+```
 
+#### Register conditional processor
 
+Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file names that meet this regular expression will register the processor.
 
+Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
 
+```js
+var lingon = require('lingon');
+var uglify = require('gulp-uglify');
 
+// only process files that do not contain ".min" in their name
+lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
+  var processors = [];
+
+  if(lingon.task == 'build') {
+    processors.push(
+      uglify({ outSourceMap: true })
+    );
+  }
+
+  return processors;
+});
+```
+
+#### Register tasks
+Use `lingon.registerTask('<TASKNAME>', fn, infoObject)` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
+
+```js
+var lingon = require('lingon');
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
+
+// add lingon task to optimize images directly in the source folder
+// execute task via "lingon imagemin"
+lingon.registerTask('imagemin', function(callback) {
+  lingon.sourcePath += '/images';
+  lingon.buildPath = lingon.sourcePath;
+
+  var optimizeImages = function(params) {
+    return imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngcrush()]
+    });
+  };
+  lingon.postProcessor('jpg').add(optimizeImages);
+  lingon.postProcessor('jpeg').add(optimizeImages);
+  lingon.postProcessor('png').add(optimizeImages);
+  lingon.postProcessor('gif').add(optimizeImages);
+  lingon.postProcessor('svg').add(optimizeImages);
+
+  lingon.build(callback, null);
+}, {
+  message: 'Optimize images (directly in the source folder!)',
+  arguments: {
+    // 'v': 'Run in verbose mode' // this argument is made up for example purposes
+  }
+});
+
+```
