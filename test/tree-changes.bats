@@ -19,11 +19,18 @@ setup() {
   # Create tmp/
   mkdir ./tmp
 
-  # Clean up source/
-  rm -r ./source/*.html 2> /dev/null
-  cp ./fixtures/* ./source/ 2> /dev/null
-  # don't add late-added-file.html just yet!
-  rm ./source/late-added-file.html 2> /dev/null
+  # Remove existing source/
+  if [ -d './source' ]; then
+    rm -r ./source 2> /dev/null
+  fi
+
+  # Create source/
+  mkdir ./source
+
+  # Populate source/ content
+  cp ./fixtures/*.html ./source/
+  # don't add late-added-file.html just yet
+  rm ./source/late-added-file.html
 
   # Start the http server
   LINGON_JOB="./lingon.js server -p 4567"
