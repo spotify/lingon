@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.4.0
+
+* Feature: A new object "context" is passed into the processor factory function. This object can be used to pass file-specific metadata around. It has the following fields built in: context.file.path (the path of the current file being rendered), context.file.layout (the path to the current layout, otherwise empty)
+* Because of this addition the lingon.context object will be renamed to lingon.global in an upcoming version. Both the global and the context objects are passed into the processor factory function, so it's backwards compatible.
+
 ## Version 1.3.0
 
 * Feature: Allow unshifting of processors and not only pushing
