@@ -105,4 +105,3 @@ Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 Licensed under the MIT license.
-
