@@ -2,8 +2,8 @@
 
 var lingon = require('../../lib/boot');
 
-lingon.global.name = "bob";
+lingon.context.name = "bob";
 
 lingon.bind('serverConfigure', function() {
-  lingon.global.name = "alice";
+  lingon.context.name = "alice";
 });

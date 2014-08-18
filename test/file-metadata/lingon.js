@@ -5,7 +5,7 @@ var lingon = require('../../lib/boot');
 var ejs = require('gulp-ejs');
 var streamHelper = require('../../lib/utils/stream');
 
-lingon.preProcessor('ejs').unshift(function(context, global) {
+lingon.preProcessor('ejs').unshift(function(global, context) {
   return es.map(function(file, cb) {
       if(!global.metadata) {
         global.metadata = {};
