@@ -3,7 +3,7 @@
 var lingon = require('../../lib/boot');
 var ngHtml2js = require('lingon-ng-html2js');
 
-lingon.preProcessor('ngt', function() {
+lingon.preProcessor.push('ngt', function() {
   return ngHtml2js({
     moduleName: 'templates',
     base: 'source'

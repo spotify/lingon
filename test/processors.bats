@@ -20,6 +20,8 @@ setup() {
   # Check that correct output files exist
   [ -f 'build/index.simplesyntax' ]
   [ -f 'build/matching.simplesyntax' ]
+  [ -f 'build/index.simplealias' ]
+  [ -f 'build/matching.simplealias' ]
   [ -f 'build/index.alternativesyntax' ]
   [ -f 'build/index.multiplesyntax' ]
   [ -f 'build/index.orderedsyntax' ]
@@ -30,6 +32,12 @@ setup() {
   [ $? -eq 0 ]
 
   diff build/matching.simplesyntax fixtures/matching.simplesyntax
+  [ $? -eq 0 ]
+
+  diff build/index.simplealias fixtures/index.simplealias
+  [ $? -eq 0 ]
+
+  diff build/matching.simplealias fixtures/matching.simplealias
   [ $? -eq 0 ]
 
   diff build/index.alternativesyntax fixtures/index.alternativesyntax
