@@ -170,9 +170,10 @@ lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
 #### Register processors
 
 Use `lingon.preProcessors` and `lingon.postProcessor` to access lingon's processors and invoke `set`, `push`, `unshift` or `remove`. The arguments are
-1) a single file extension string or an array of mulitple
-2) an optional regular expression that matches the file name for conditional processors (more about that in the next section)
-3) a factory function that will create the stream pipes
+
+1. a single file extension string or an array of mulitple
+2. an optional regular expression that matches the file name for conditional processors (more about that in the next section)
+3. a factory function that will create the stream pipes
 
 The factory function gets passed in two configuration variables when executed: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
 This function then returns a single (or an array of multiple) stream modifiers that will be piped one after another to their respective files.
