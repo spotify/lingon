@@ -7,22 +7,22 @@ var createProcessor = function(type) {
   return es.map(function(file, cb) {
     var contents = file.contents.toString('utf8');
 
-    contents += type + 'processor has been executed' + "\n";
+    contents += type + 'processor has been executed' + '\n';
 
     file.contents = new Buffer(contents);
     cb(null, file);
   });
 };
 
-lingon.preProcessor('ngt', function(params) {
+lingon.preProcessors.push('ngt', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
-lingon.extensionRewriter.set("boo", "foo");
+lingon.extensionRewriter.set('boo', 'foo');
 
-lingon.preProcessor('boo', function(params) {
+lingon.preProcessors.push('boo', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
-lingon.extensionRewriter.set("normal", "rewritten");
-lingon.extensionRewriter.remove("normal");
+lingon.extensionRewriter.set('normal', 'rewritten');
+lingon.extensionRewriter.remove('normal');
