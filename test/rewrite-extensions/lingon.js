@@ -14,13 +14,13 @@ var createProcessor = function(type) {
   });
 };
 
-lingon.preProcessor.push('ngt', function(params) {
+lingon.preProcessors.push('ngt', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
 lingon.extensionRewriter.set('boo', 'foo');
 
-lingon.preProcessor.push('boo', function(params) {
+lingon.preProcessors.push('boo', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
