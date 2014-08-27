@@ -169,11 +169,13 @@ lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
 
 #### Register processors
 
-Use `lingon.preProcessor('<FILETYPE>', fn)` and `lingon.postProcessor('<FILETYPE>', fn)` to access lingon's processors, on the result we can then invoke `push`, `unshift` and `set` to modify the processors for a given file type.
+Use `lingon.preProcessors` and `lingon.postProcessor` to access lingon's processors and invoke `set`, `push`, `unshift` or `remove`. The arguments are
+1) a single file extension string or an array of mulitple
+2) an optional regular expression that matches the file name for conditional processors (more about that in the next section)
+3) a factory function that will create the stream pipes
 
-The argument for these methods is a single factory function that gets passed to configuration variables: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
-
-This function then returns an array of stream modifiers that will be piped one after another to their respective files.
+The factory function gets passed in two configuration variables when executed: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
+This function then returns a single (or an array of multiple) stream modifiers that will be piped one after another to their respective files.
 
 ```js
 var lingon = require('lingon');
@@ -182,21 +184,22 @@ var uglify = require('gulp-uglify');
 var less = require('gulp-less');
 
 // registering a new preprocessor and adding it to the end of the file type's processor chain
-lingon.preProcessor('ngt').push(function(context, globals) {
-  return [
-    ngHtml2js({ base: 'source' })
-  ];
+lingon.preProcessors.push('ngt', function(context, globals) {
+  // return a single stream modifier
+  return ngHtml2js({ base: 'source' });
 });
 
 // registering a new postprocessor and adding it to the beginning of the file type's processor chain
-lingon.postProcessor('js').unshift(function(context, globals) {
+lingon.postProcessors.unshift('js', function(context, globals) {
+  // return an array of stream modifiers
   return [
     uglify({ outSourceMap: true })
   ];
 });
 
 // registering a new postprocessor and overwriting any existing ones for the file type
-lingon.postProcessor('less').set(function(context, globals) {
+lingon.postProcessors.set('less', function(context, globals) {
+  // return an array of stream modifiers
   return [
     less()
   ];
@@ -214,7 +217,7 @@ var lingon = require('lingon');
 var uglify = require('gulp-uglify');
 
 // only process files that do not contain ".min" in their name
-lingon.postProcessor('js').push(/^((?!\.min).)*$/, function() {
+lingon.postProcessors.push('js', /^((?!\.min).)*$/, function() {
   var processors = [];
 
   if(lingon.task == 'build') {
@@ -248,11 +251,7 @@ lingon.registerTask('imagemin', function(callback) {
       use: [pngcrush()]
     });
   };
-  lingon.postProcessor('jpg').add(optimizeImages);
-  lingon.postProcessor('jpeg').add(optimizeImages);
-  lingon.postProcessor('png').add(optimizeImages);
-  lingon.postProcessor('gif').add(optimizeImages);
-  lingon.postProcessor('svg').add(optimizeImages);
+  lingon.postProcessors.add(['jpg', 'jpeg', 'png', 'gif', 'svg'], optimizeImages);
 
   lingon.build(callback, null);
 }, {
