@@ -10,7 +10,7 @@ if [ $1 ];
 then
   target=$1
 else
-  target='test/'
+  target='tests/'
 fi
 
-./test/vendor/bats/bin/bats $target
+./tests/vendor/bats/bin/bats $target
