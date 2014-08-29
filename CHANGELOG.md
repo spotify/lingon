@@ -1,5 +1,11 @@
 # Changelog
 
+## HEAD
+
+* Feature: Add unit test framework `tape` and restructure test folders
+* Feature: Add option to specify a directory index in server mode
+* Feature: Refactor processors (ProcessorStore) with a simplified API syntax
+
 ## Version 1.4.0
 
 * Feature: A new object "context" is passed into the processor factory function. This object can be used to pass file-specific metadata around. It has the following fields built in: context.file.path (the path of the current file being rendered), context.file.layout (the path to the current layout, otherwise empty)
