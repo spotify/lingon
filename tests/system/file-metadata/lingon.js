@@ -2,16 +2,20 @@
 
 var es = require('event-stream');
 var lingon = require('../../../lib/boot');
-var ejs = require('gulp-ejs');
-var streamHelper = require('../../../lib/utils/stream');
+var spawn  = require('child_process').spawn;
 
 lingon.preProcessors.unshift('ejs', function(global, context) {
   return es.map(function(file, cb) {
-      if(!global.metadata) {
-        global.metadata = {};
-      }
+      var shasum = spawn('shasum', [
+        context.file.path
+      ]);
 
-      global.metadata[file.path] = 'Hello';
-      cb(null, file);
+      shasum.stdout.on('data', function (data) {
+        context.file.metadata = data.toString().trim();
+      });
+
+      shasum.on('close', function (data) {
+        cb(null, file);
+      });
     });
 });
