@@ -7,11 +7,11 @@ var spawn  = require('child_process').spawn;
 lingon.preProcessors.unshift('ejs', function(global, context) {
   return es.map(function(file, cb) {
       var shasum = spawn('shasum', [
-        context.file.path
+        context.file
       ]);
 
       shasum.stdout.on('data', function (data) {
-        context.file.metadata = data.toString().trim();
+        context.metadata = data.toString().trim();
       });
 
       shasum.on('close', function (data) {
