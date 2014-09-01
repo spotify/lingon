@@ -5,6 +5,7 @@
 * Feature: Add unit test framework `tape` and restructure test folders
 * Feature: Add option to specify a directory index in server mode
 * Feature: Refactor processors (ProcessorStore) with a simplified API syntax
+* Refactor: Removed the processorStream built in file cache and fixed bugs in the directiveStream.
 
 ## Version 1.4.0
 
