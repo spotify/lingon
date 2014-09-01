@@ -10,9 +10,9 @@ One of the most basic projects imaginable looks like this:
 
 There's a lingon.js file and a source directory containing an index.html file.
 
-	lingon.js
-	source
-		index.html
+  lingon.js
+  source
+    index.html
 
 #### lingon.js
 ```js
@@ -38,11 +38,11 @@ The HTML file contains the following:
 
 In order to build this project with Lingon we first make the lingon.js file executable:
 
-	chmod +x lingon.js
+  chmod +x lingon.js
 
 Then we run the file directly and pass the 'build' task as the first argument:
 
-	./lingon.js build
+  ./lingon.js build
 
 The output of this command looks like:
 
@@ -60,7 +60,7 @@ One of the primary features of Lingon is the built in http server. It allows you
 
 To start the built in http server, run: 
 
-	./lingon.js server
+  ./lingon.js server
 
 The server "task" is the default in Lingon, so just running ``./lingon.js`` will also start the server.
 
@@ -68,34 +68,84 @@ The server "task" is the default in Lingon, so just running ``./lingon.js`` will
 
 Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module. 
 
-Lingon can forward a "context" object to the EJS renderer that allows you to pass dynamic data to the ejs templates. All fields on the context object will be available for all templates during build.
+### Render data with EJS
+
+The Lingon instance has a property `lingon.global` which is available in all EJS templates during rendering. The object can be accessed from all EJS templates & layouts.
 
 **Example: lingon.js**
 
 ```js
 var lingon = require('lingon');
 
-lingon.context.name = "bob";
+lingon.global.name = "bob";
 ```
 
 **Example: index.ejs**
 
 ```html
 <html>
-  <%= name %>
+  <%= global.name %>
 </html>
 ```
 
-#### Different values during build & server
+### File specific context
+
+EJS templates also have access to a `context` object that contains information about the current file being processed.
+
+Name | Description
+-----|------------
+file | *Path to current file being rendered*
+layout | *Path to current layout (null if no layout is used)*
+template | *Path to the current source file**
+
+**"source file" refers to the file being written to the build path after partials and layouts have been included.*
+
+The `context` object can also be extended with custom properties in a pre-processor. For example, use this to get the shasum of each file and write it in the template.
+
+**Example: lingon.js**
+```js
+var lingon = require('lingon');
+var es = require('event-stream');
+var spawn  = require('child_process').spawn;
+
+lingon.preProcessors.unshift('ejs', function(global, context) {
+  return es.map(function(file, cb) {
+      var shasum = spawn('shasum', [
+        context.file
+      ]);
+
+      shasum.stdout.on('data', function (data) {
+        context.shasum = data.toString().trim();
+      });
+
+      shasum.on('close', function (data) {
+        cb(null, file);
+      });
+    });
+});
+```
+
+**Example: home.ejs**
+```html
+<div class="home">
+  <h1>file: <%= context.file %></h1>
+  <h2>layout: <%= context.layout %></h2>
+  <h3>template: <%= context.template %></h3>
+  <h4>metadata: <%= context.shasum %></h4>
+</div>
+```
+
+
+### Different values during build & server
 It's possible to pass different data to the server and build tasks by overriding data in the `serverConfigure` event. This way the title will be 'bob' during build and 'alice' when the server has started.
 
 ```js
 var lingon = require('lingon');
 
-lingon.context.name = "bob";
+lingon.global.name = "bob";
 
 lingon.bind('serverConfigure', function() {
-  lingon.context.name = "alice";
+  lingon.global.name = "alice";
 });
 ```
 
@@ -111,11 +161,11 @@ Let's render a homepage template inside an index layout.
 
 This example has the following structure: 
 
-	lingon.js
-	source
-		_layouts
-			index.html
-		home.html
+  lingon.js
+  source
+    _layouts
+      index.html
+    home.html
 
 #### File: source/_layouts/index.html
 
