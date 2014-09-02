@@ -15,10 +15,9 @@ setup() {
   ./lingon.js build
 
   # Check that correct output files exist
-  diff build/home.html fixtures/home.html
-  [ $? -eq 0 ]
-
   diff build/article.html fixtures/article.html
   [ $? -eq 0 ]
-}
 
+  diff build/nested.html fixtures/nested.html
+  [ $? -eq 0 ]
+}

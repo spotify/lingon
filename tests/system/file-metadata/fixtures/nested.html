@@ -1,0 +1,22 @@
+<html>
+<body>
+<head class="index">
+  <h1>file: source/_layouts/index.ejs</h1>
+  <h2>layout: null</h2>
+  <h3>template: source/nested.ejs</h3>
+  <h4>metadata: source/_layouts/index.ejs</h4>
+</head>
+<section class="subLayout">
+  <h1>file: source/_layouts/sub_layout.ejs</h1>
+  <h2>layout: source/_layouts/index.ejs</h2>
+  <h3>template: source/nested.ejs</h3>
+  <h4>metadata: source/_layouts/sub_layout.ejs</h4>
+<div class="nested">
+  <h1>file: source/nested.ejs</h1>
+  <h2>layout: source/_layouts/sub_layout.ejs</h2>
+  <h3>template: source/nested.ejs</h3>
+  <h4>metadata: source/nested.ejs</h4>
+</div>
+</section>
+</body>
+</html>
