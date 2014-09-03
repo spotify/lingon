@@ -36,12 +36,14 @@ Create a "lingon.js" file in the root of the project and make it executable:
 This file is used to both configure and run Lingon. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
 
 ```JavaScript
+#!/usr/bin/env node
 var lingon = require("lingon");
 ```
 
 This will allow Lingon to build and serve a basic web applications. By default, Lingon will look for source files in `./source` and put build files in `./build`. These defaults can be changed like this: 
 
 ```JavaScript
+#!/usr/bin/env node
 var lingon = require("lingon");
 
 lingon.sourcePath = "/some/other/path";
