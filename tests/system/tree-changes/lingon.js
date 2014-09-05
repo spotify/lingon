@@ -2,4 +2,4 @@
 
 var lingon = require('../../../lib/boot');
 
-lingon.catchAll = 'error404.html';
+lingon.config.server.catchAll = 'error404.html';

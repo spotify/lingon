@@ -10,27 +10,27 @@ setup() {
 
 @test "basic project: can build" {
   # Remove existing build/
-  if [ -d './build' ]; then
-    rm -r ./build 2> /dev/null
+  if [ -d './build-renamed' ]; then
+    rm -r ./build-renamed 2> /dev/null
   fi
 
   # Build project
   ./lingon.js build
 
   # Check that correct output files exist
-  [ -f 'build/index.html' ]
-  [ -f 'build/index.js' ]
-  [ -f 'build/index.css' ]
-  [ -f 'build/image.png' ]
-  [ -f 'build/lib/lib.js' ]
-  [ ! -d 'build/_vendor' ]
+  [ -f 'build-renamed/index.html' ]
+  [ -f 'build-renamed/index.js' ]
+  [ -f 'build-renamed/index.css' ]
+  [ -f 'build-renamed/image.png' ]
+  [ -f 'build-renamed/lib/lib.js' ]
+  [ ! -d 'build-renamed/_vendor' ]
 }
 
 @test "basic project: can concatenate js files" {
   # Compare the built index.js file to a reference
   # Success if diff exited with status 0
 
-  diff build/index.js fixtures/index.js
+  diff build-renamed/index.js fixtures/index.js
   [ $? -eq 0 ]
 }
 
@@ -65,18 +65,18 @@ setup() {
   kill $LINGON_JOB_PID
 
   # Did we get everything?
-  diff tmp/index.html build/index.html
+  diff tmp/index.html build-renamed/index.html
   [ $? -eq 0 ]
 
-  diff tmp/index.js build/index.js
+  diff tmp/index.js build-renamed/index.js
   [ $? -eq 0 ]
 
-  diff tmp/index.css build/index.css
+  diff tmp/index.css build-renamed/index.css
   [ $? -eq 0 ]
 
-  diff tmp/image.png build/image.png
+  diff tmp/image.png build-renamed/image.png
   [ $? -eq 0 ]
 
-  diff tmp/lib.js build/lib/lib.js
+  diff tmp/lib.js build-renamed/lib/lib.js
   [ $? -eq 0 ]
 }

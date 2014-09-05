@@ -4,7 +4,7 @@ This document describes real use cases for Lingon. It starts by covering the bas
 
 ## Build a basic project
 
-One of the most basic projects imaginable looks like this: 
+One of the most basic projects imaginable looks like this:
 
 ### Project structure
 
@@ -24,7 +24,7 @@ In the lingon.js file we import the lingon module. When lingon is imported it wi
 
 #### source/index.html
 
-The HTML file contains the following: 
+The HTML file contains the following:
 
 ```html
 <html>
@@ -58,7 +58,7 @@ Lingon read the source directory and found the index.html file. It was then oupu
 
 One of the primary features of Lingon is the built in http server. It allows you to serve the project locally and view it in your browser. Refreshing will trigger a rebuild, so you can work and instantly see your changes.
 
-To start the built in http server, run: 
+To start the built in http server, run:
 
   ./lingon.js server
 
@@ -66,7 +66,7 @@ The server "task" is the default in Lingon, so just running ``./lingon.js`` will
 
 ## Render EJS templates
 
-Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module. 
+Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module.
 
 ### Render data with EJS
 
@@ -159,7 +159,7 @@ EJS does not support layouts, so this feature has been added natively to Lingon.
 
 Let's render a homepage template inside an index layout.
 
-This example has the following structure: 
+This example has the following structure:
 
   lingon.js
   source
@@ -169,7 +169,7 @@ This example has the following structure:
 
 #### File: source/_layouts/index.html
 
-The layout is a regular html file that defines an inline lingon yield directive. The yield directive will be replaced with the contents of the template. 
+The layout is a regular html file that defines an inline lingon yield directive. The yield directive will be replaced with the contents of the template.
 
 **important: It needs to be on it's own line.**
 
@@ -214,7 +214,7 @@ By default the following file types are registered: `['.js', '.less', '.css', '.
 ```js
 var lingon = require('lingon');
 
-lingon.validDirectiveFileTypes.push('.ngt', '.coffee');
+lingon.config.validDirectiveFileTypes.push('.ngt', '.coffee');
 ```
 
 #### Register processors
@@ -292,8 +292,8 @@ var pngcrush = require('imagemin-pngcrush');
 // add lingon task to optimize images directly in the source folder
 // execute task via "lingon imagemin"
 lingon.registerTask('imagemin', function(callback) {
-  lingon.sourcePath += '/images';
-  lingon.buildPath = lingon.sourcePath;
+  lingon.config.sourcePath += '/images';
+  lingon.config.buildPath = lingon.config.sourcePath;
 
   var optimizeImages = function(params) {
     return imagemin({
