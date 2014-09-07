@@ -35,10 +35,10 @@ setup() {
   kill $LINGON_JOB_PID
 
   # Did we get everything?
-  diff tmp/index.html build/index.html
+  diff tmp/index.html source/index.html
   [ $? -eq 0 ]
 
-  diff tmp/fallback.html build/fallback.html
+  diff tmp/fallback.html source/fallback.html
   [ $? -eq 0 ]
 }
 
@@ -71,12 +71,12 @@ setup() {
   kill $LINGON_JOB_PID
 
   # Did we get everything?
-  diff tmp/index.html build/index.html
+  diff tmp/index.html source/index.html
   [ $? -eq 0 ]
 
-  diff tmp/fallback.html build/fallback.html
+  diff tmp/fallback.html source/fallback.html
   [ $? -eq 0 ]
 
-  diff tmp/fallback-lingon.html build/fallback.html
+  diff tmp/fallback-lingon.html source/fallback.html
   [ $? -eq 0 ]
 }
