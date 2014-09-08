@@ -85,15 +85,11 @@ setup() {
   # Wait a while
   sleep 2
 
-  # Create new file after initial build
-  cp source/js/vendor.js source/js/vendor_copy.js
-
   # Get some files
   server="http://localhost:4567"
   download="curl --silent -o"
 
   ${download} tmp/vendor.js $server/js/vendor.js
-  ${download} tmp/vendor_copy.js $server/js/vendor_copy.js
   ${download} tmp/vendor.css $server/css/vendor.css
 
   # Terminate server
@@ -103,14 +99,8 @@ setup() {
   diff tmp/vendor.js build/js/vendor.js
   [ $? -eq 0 ]
 
-  diff tmp/vendor_copy.js build/js/vendor_copy.js
-  [ $? -eq 0 ]
-
   diff tmp/vendor.css build/css/vendor.css
   [ $? -eq 0 ]
-
-  # Remove late created source file
-  rm source/js/vendor_copy.js
 }
 
 @test "basic project 2: can serve less->css files over http" {

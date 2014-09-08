@@ -6,6 +6,8 @@
 * Feature: Add option to specify a directory index in server mode
 * Feature: Refactor processors (ProcessorStore) with a simplified API syntax
 * Refactor: Removed the processorStream built in file cache and fixed bugs in the directiveStream.
+* Refactor: Rewrote the build logic as a pipeline of pluggable functions
+* Breaking change: Files are no longer written to disk when in server mode. Only the build task will write files to disk.
 
 ## Version 1.4.0
 
