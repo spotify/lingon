@@ -41,11 +41,15 @@ The HTML file contains the following:
 
 In order to build this project with Lingon we first make the lingon.js file executable:
 
-`chmod +x lingon.js`
+```
+chmod +x lingon.js
+```
 
 Then we run the file directly and pass the 'build' task as the first argument:
 
-`./lingon.js build`
+```
+./lingon.js build
+```
 
 The output of this command looks like:
 
@@ -63,7 +67,9 @@ One of the primary features of Lingon is the built in http server. It allows you
 
 To start the built in http server, run:
 
-`./lingon.js server`
+```
+./lingon.js server
+```
 
 The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
 
