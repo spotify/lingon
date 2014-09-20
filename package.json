@@ -56,7 +56,8 @@
     "gulp-markdown": "~0.1.2",
     "ordered-merge-stream": "~0.0.0",
     "q": "~2.0.0",
-    "tape": "~1.0.4"
+    "tape": "~1.0.4",
+    "lex": "1.7.6"
   },
   "devDependencies": {
     "lingon-ng-html2js": "~0.1.6"
