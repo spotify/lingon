@@ -18,11 +18,11 @@ lingon.preProcessors.push('ngt', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
-lingon.extensionRewrites['boo'] = 'foo';
+lingon.rewriteExtension('boo', 'foo');
 
 lingon.preProcessors.push('boo', function(params) {
   return createProcessor('simple preprocessor that will be overwritten ');
 });
 
-lingon.extensionRewrites['normal'] = 'rewritten';
-delete lingon.extensionRewrites['normal'];
+lingon.rewriteExtension('normal', 'rewritten');
+lingon.clearExtensionRewrite('normal');
