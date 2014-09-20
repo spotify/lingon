@@ -10,12 +10,15 @@ One of the most basic projects imaginable looks like this:
 
 There's a lingon.js file and a source directory containing an index.html file.
 
-  lingon.js
-  source
-    index.html
+```
+lingon.js
+source
+  index.html
+```
 
 #### lingon.js
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 ```
 
@@ -38,11 +41,15 @@ The HTML file contains the following:
 
 In order to build this project with Lingon we first make the lingon.js file executable:
 
-  chmod +x lingon.js
+```
+chmod +x lingon.js
+```
 
 Then we run the file directly and pass the 'build' task as the first argument:
 
-  ./lingon.js build
+```
+./lingon.js build
+```
 
 The output of this command looks like:
 
@@ -60,9 +67,11 @@ One of the primary features of Lingon is the built in http server. It allows you
 
 To start the built in http server, run:
 
-  ./lingon.js server
+```
+./lingon.js server
+```
 
-The server "task" is the default in Lingon, so just running ``./lingon.js`` will also start the server.
+The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
 
 ## Render EJS templates
 
@@ -75,6 +84,7 @@ The Lingon instance has a property `lingon.global` which is available in all EJS
 **Example: lingon.js**
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 
 lingon.global.name = "bob";
@@ -104,6 +114,7 @@ The `context` object can also be extended with custom properties in a pre-proces
 
 **Example: lingon.js**
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 var es = require('event-stream');
 var spawn  = require('child_process').spawn;
@@ -140,6 +151,7 @@ lingon.preProcessors.unshift('ejs', function(global, context) {
 It's possible to pass different data to the server and build tasks by overriding data in the `serverConfigure` event. This way the title will be 'bob' during build and 'alice' when the server has started.
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 
 lingon.global.name = "bob";
@@ -161,11 +173,13 @@ Let's render a homepage template inside an index layout.
 
 This example has the following structure:
 
-  lingon.js
-  source
-    _layouts
-      index.html
-    home.html
+```
+lingon.js
+source
+  _layouts
+    index.html
+  home.html
+```
 
 #### File: source/_layouts/index.html
 
@@ -242,6 +256,7 @@ If you want to use directives (includes) in your own custom file extensions you 
 By default the following file types are registered: `['.js', '.less', '.css', '.ejs', '.html', '.md']`
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 
 lingon.config.validDirectiveFileTypes.push('.ngt', '.coffee');
@@ -259,6 +274,7 @@ The factory function gets passed in two configuration variables when executed: t
 This function then returns a single (or an array of multiple) stream modifiers that will be piped one after another to their respective files.
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 var ngHtml2js = require('lingon-ng-html2js');
 var uglify = require('gulp-uglify');
@@ -294,6 +310,7 @@ Sometimes a processor is wanted only under certain conditions so the `push` and 
 Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 var uglify = require('gulp-uglify');
 
@@ -315,6 +332,7 @@ lingon.postProcessors.push('js', /^((?!\.min).)*$/, function() {
 Use `lingon.registerTask('<TASKNAME>', fn, infoObject)` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
 
 ```js
+#!/usr/bin/env node
 var lingon = require('lingon');
 var imagemin = require('gulp-imagemin');
 var pngcrush = require('imagemin-pngcrush');
