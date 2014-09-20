@@ -207,6 +207,36 @@ This is a website.
 
 ## Advanced Lingon configurations
 
+#### Rewriting file extensions
+
+An extensions rewrite is what happens when your input file "index.ejs" is built to "index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api: 
+
+**Rewrite all *.fika files to *.js**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtensions('fika', 'js');
+```
+
+You can also rewrite multiple extensions at the same time: 
+
+**Rewrite all *.json.ejs files to *.json**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtensions('json.ejs', 'json');
+```
+
+If you rewrite to an empty string the extension will simply disappear: 
+
+**Remove .min from all filenames**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtensions('min', '');
+```
+
+
 #### Allowing the usage of directives (includes) in additional file types
 If you want to use directives (includes) in your own custom file extensions you can just add them.
 By default the following file types are registered: `['.js', '.less', '.css', '.ejs', '.html', '.md']`
