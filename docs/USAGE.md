@@ -215,7 +215,7 @@ An extensions rewrite is what happens when your input file "index.ejs" is built 
 ```js
 var lingon = require('lingon');
 
-lingon.rewriteExtensions('fika', 'js');
+lingon.rewriteExtension('fika', 'js');
 ```
 
 You can also rewrite multiple extensions at the same time: 
@@ -224,7 +224,7 @@ You can also rewrite multiple extensions at the same time:
 ```js
 var lingon = require('lingon');
 
-lingon.rewriteExtensions('json.ejs', 'json');
+lingon.rewriteExtension('json.ejs', 'json');
 ```
 
 If you rewrite to an empty string the extension will simply disappear: 
@@ -233,7 +233,7 @@ If you rewrite to an empty string the extension will simply disappear:
 ```js
 var lingon = require('lingon');
 
-lingon.rewriteExtensions('min', '');
+lingon.rewriteExtension('min', '');
 ```
 
 
