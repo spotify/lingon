@@ -76,8 +76,8 @@ Start the server on a custom port:
 
 ## Documentation
 
-### [Usage examples](usage)
-### [API Reference]()
+### [Usage examples](docs/USAGE.md)
+### [API Reference](docs/API.md)
 
 ## Project templates
 
