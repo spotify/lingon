@@ -28,9 +28,10 @@ setup() {
   mkdir ./source
 
   # Populate source/ content
-  cp ./fixtures/*.html ./source/
+  cp ./resources/* ./source/
   # don't add late-added-file.html just yet
   rm ./source/late-added-file.html
+  rm ./source/late-added-markdown.md
 
   # Start the http server
   LINGON_JOB="./lingon.js server -p 4567"
@@ -50,8 +51,12 @@ setup() {
   ${download} tmp/late-renamed-file-old-name-before.html $server/late-renamed-file.html
   ${download} tmp/late-renamed-file-new-name-before.html $server/renamed-file.html
 
-  cp ./fixtures/late-added-file.html ./source/late-added-file.html
+  cp ./resources/late-added-file.html ./source/late-added-file.html
   ${download} tmp/late-added-file-after.html $server/late-added-file.html
+
+  cp ./resources/late-added-markdown.md ./source/late-added-markdown.md
+  ${download} tmp/late-added-markdown.html $server/late-added-markdown.html
+
   rm ./source/late-removed-file.html
   ${download} tmp/late-removed-file-after.html $server/late-removed-file.html
   mv ./source/late-renamed-file.html ./source/renamed-file.html
@@ -66,6 +71,9 @@ setup() {
   [ $? -eq 0 ]
 
   diff tmp/late-added-file-after.html fixtures/late-added-file.html
+  [ $? -eq 0 ]
+
+  diff tmp/late-added-markdown.html fixtures/late-added-markdown.html
   [ $? -eq 0 ]
 
   diff tmp/late-removed-file-before.html fixtures/late-removed-file.html

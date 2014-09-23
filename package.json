@@ -57,6 +57,7 @@
     "gulp-markdown": "~1.0.0",
     "ordered-merge-stream": "~0.0.0",
     "q": "~2.0.0",
+    "lex": "1.7.6",
     "tape": "~2.14.0"
   },
   "devDependencies": {
