@@ -252,14 +252,14 @@ lingon.rewriteExtension('min', '');
 
 
 #### Allowing the usage of directives (includes) in additional file types
-If you want to use directives (includes) in your own custom file extensions you can just add them.
+If you want to use directives (includes) in your own custom file extensions you can just add them to the array `lingon.config.directiveFileTypes`.
 By default the following file types are registered: `['.js', '.less', '.css', '.ejs', '.html', '.md']`
 
 ```js
 #!/usr/bin/env node
 var lingon = require('lingon');
 
-lingon.config.validDirectiveFileTypes.push('.ngt', '.coffee');
+lingon.config.directiveFileTypes.push('.ngt', '.coffee');
 ```
 
 #### Register processors
