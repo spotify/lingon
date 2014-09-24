@@ -4,14 +4,14 @@ var es = require('event-stream');
 var lingon = require('../../../lib/boot');
 var spawn  = require('child_process').spawn;
 
-lingon.preProcessors.unshift('ejs', function(global, context) {
+lingon.preProcessors.unshift('ejs', function(params) {
   return es.map(function(file, cb) {
       var ls = spawn('ls', [
-        context.file
+        params.context.file
       ]);
 
       ls.stdout.on('data', function (data) {
-        context.metadata = data.toString().trim();
+        params.context.metadata = data.toString().trim();
       });
 
       ls.on('close', function (data) {

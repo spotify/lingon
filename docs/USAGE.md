@@ -119,14 +119,18 @@ var lingon = require('lingon');
 var es = require('event-stream');
 var spawn  = require('child_process').spawn;
 
-lingon.preProcessors.unshift('ejs', function(global, context) {
+lingon.preProcessors.unshift('ejs', function(params) {
+  // This functions takes an object of named params: 
+  // params.global    The file-specific context object  
+  // params.context   The global data object
+
   return es.map(function(file, cb) {
       var shasum = spawn('shasum', [
-        context.file
+        params.context.file
       ]);
 
       shasum.stdout.on('data', function (data) {
-        context.shasum = data.toString().trim();
+        params.context.shasum = data.toString().trim();
       });
 
       shasum.on('close', function (data) {
