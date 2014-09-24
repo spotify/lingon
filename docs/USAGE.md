@@ -73,6 +73,23 @@ To start the built in http server, run:
 
 The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
 
+## The config object
+
+The Lingon configuration can be directly accessed and mofied from inside the lingon.js file via the `lingon.config` object. The  following properties are available:
+
+Name | Description
+-----|------------
+defaultTask | *Task that will be run when invoking lingon without any arguments, defaults to `'server'`.*
+sourcePath | *Name of the project's source folder, defaults to `'source'`.*
+buildPath | *Name of the project's build folder, defaults to `'build'`.*
+ignorePrefixPattern | *Pattern for ignoring files in the build process, defaults to `new RegExp('\/_')`.*
+directiveFileTypes | *Registered file extensions that will be parsed for directives, defaults to `['js' 'less' 'css' 'ejs' 'html' 'md']`.*
+extensionRewrites | *List of file extensions that will be converted if a postprocessor is registered for them, defaults to `{"ejs": "html", "less": "css", …}`*
+server | *Is itself a config object for the built in server mode.*
+server.directoryIndex | *Index file that is to be served per directory when using the server mode, defaults to `'index.html'`.*
+server.catchAll | *Fallback file that is to be served if the requested one could not be found using the server mode, defaults to `undefined`.*
+server.namespace | *Namespace to handle requests from a different root in server mode (e.g. `http://localhost:5678/my-namespace/index.html`), defaults to `'/'`.*
+
 ## Render EJS templates
 
 Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module.
