@@ -35,13 +35,10 @@ setup() {
   kill $LINGON_JOB_PID
 
   # Did we get everything?
-  diff tmp/index.html source/index.html
+  diff tmp/index.html fixtures/default.html
   [ $? -eq 0 ]
 
-  diff tmp/fallback.html source/index.html
-  [ $? -eq 0 ]
-
-  diff tmp/index.html tmp/fallback.html
+  diff tmp/fallback.html fixtures/catch-all.html
   [ $? -eq 0 ]
 }
 
@@ -73,9 +70,9 @@ setup() {
   kill $LINGON_JOB_PID
 
   # Did we get everything?
-  diff tmp/default.html source/default.html
+  diff tmp/default.html fixtures/default.html
   [ $? -eq 0 ]
 
-  diff tmp/default2.html source/test/default.html
+  diff tmp/default2.html fixtures/test/default.html
   [ $? -eq 0 ]
 }
