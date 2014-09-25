@@ -10,7 +10,11 @@ if [ $1 ];
 then
   target=$1
 else
-  target='test/'
+  target='tests/system/*'
 fi
 
-./test/vendor/bats/bin/bats $target
+echo "Running unit tests"
+./node_modules/tape/bin/tape tests/unit/*
+
+echo "Running system tests"
+./tests/vendor/bats/bin/bats $target

@@ -29,7 +29,7 @@ $ npm install lingon
 
 ## Prepare your project
 
-Create a "lingon.js" file in the root of the project and make it executable: 
+Create a "lingon.js" file in the root of the project and make it executable:
 
 	$ chmod +x lingon.js
 
@@ -40,14 +40,14 @@ This file is used to both configure and run Lingon. This is where you define whi
 var lingon = require("lingon");
 ```
 
-This will allow Lingon to build and serve a basic web applications. By default, Lingon will look for source files in `./source` and put build files in `./build`. These defaults can be changed like this: 
+This will allow Lingon to build and serve a basic web applications. By default, Lingon will look for source files in `./source` and put build files in `./build`. These defaults can be changed like this:
 
 ```JavaScript
 #!/usr/bin/env node
 var lingon = require("lingon");
 
-lingon.sourcePath = "/some/other/path";
-lingon.buildPath = "/dev/null";
+lingon.config.sourcePath = "/some/other/path";
+lingon.config.buildPath = "/dev/null";
 ```
 
 Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
@@ -55,7 +55,7 @@ Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all feat
 ## Run Lingon
 
 Show help:
-	
+
 	$ ./lingon.js -h
 
 Build once and quit:
@@ -67,11 +67,11 @@ Clean and build:
 	$ ./lingon.js clean build
 
 Start the server:
-	
+
 	$ ./lingon.js
 
 Start the server on a custom port:
-	
+
 	$ ./lingon.js server -p 1111
 
 ## Documentation

@@ -1,5 +1,16 @@
 # Changelog
 
+## HEAD
+
+* Feature: Add option to specify a namespace in server mode
+* Feature: Add option to specify a directory index in server mode
+* Feature: Add unit test framework `tape` and restructure test folders
+* Refactor: Removed the processorStream built in file cache and fixed bugs in the directiveStream.
+* Refactor: Rewrote the build logic as a pipeline of pluggable functions
+* API change: Moved all configuration to `lingon.config`
+* API change: Refactor processors (ProcessorStore) with a simplified API syntax
+* API change: Files are no longer written to disk when in server mode. Only the build task will write files to disk.
+
 ## Version 1.4.0
 
 * Feature: A new object "context" is passed into the processor factory function. This object can be used to pass file-specific metadata around. It has the following fields built in: context.file.path (the path of the current file being rendered), context.file.layout (the path to the current layout, otherwise empty)
