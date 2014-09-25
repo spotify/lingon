@@ -2,5 +2,5 @@
 
 var lingon = require('../../../lib/boot');
 
-lingon.config.server.catchAll = 'index.html';
+lingon.config.server.catchAll = 'catch-all.html';
 lingon.config.server.directoryIndex = 'default.html';
