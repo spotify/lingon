@@ -371,7 +371,7 @@ lingon.registerTask('imagemin', function(callback) {
       use: [pngcrush()]
     });
   };
-  lingon.postProcessors.add(['jpg', 'jpeg', 'png', 'gif', 'svg'], optimizeImages);
+  lingon.postProcessors.push(['jpg', 'jpeg', 'png', 'gif', 'svg'], optimizeImages);
 
   lingon.build(callback, null);
 }, {
