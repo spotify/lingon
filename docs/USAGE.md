@@ -2,6 +2,38 @@
 
 This document describes real use cases for Lingon. It starts by covering the basics and proceeds to more advanced uses. The usage documentation is work in progress. Please help out by documenting your use cases in a PR. Thanks!
 
+## Preface: The Lingon conventions
+
+So far we've been talking a lot about conventions. Here they are in fairly short form:
+
+#### Convention 1: Files are concatenated using "directives"
+
+Common example: Our project consists of many JS files and we want to output one file with everything in it. The solution is to use "directives".
+
+Directives are Lingon-specific commands that live in the header of certain files (js, html, ejs). The commands are hidded using the comments of the source file and look like this:
+
+**source/app.js**
+```JavaScript
+//= include '../bower_components/3rdParty/index.js'
+//= include '_app/myCode.js'
+
+// This code will be appended last
+var something = someFunctionFromMyCode();
+
+```
+
+See the "directives" section below for more details.
+
+#### Convention 2: Paths starting with `_` are excluded
+
+If a path starts with an underscore (such as `source/_lib/`), Lingon will ignore it. This is how you separate the source structure from the built structure. A common pattern is to have a `source/_app` directory and a `source/app.js` file that includes the app sources in some specific order using directives.
+
+#### Convention 3: Files are processed based on their filename extensions
+
+Processing a file means somehow transforming it. For instance, compiling LESS to CSS, or minifying a JS file. Processors are regular Gulp streams and they are registered to a file extension. This means that you for instance tell Lingon to "minify all files names *.min.js.
+
+See the "Using gulp processors" section below for more details.
+
 ## 01 Build a basic project
 
 One of the most basic projects imaginable looks like this:
@@ -73,7 +105,38 @@ To start the built in http server, run:
 
 The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
 
-## 03 Using file processors (Gulp streams)
+## 03 Using file directives
+
+File directives are commands living in the header of files. They tell Lingon how to concatenate different files together. Directives are only parsed inside certain file types: `.js`, `.html`, `.less` and `.ejs`. The "Advanced Lingon usage" section below explains how add additional files to parse.
+
+* A directive must be escaped using a js, CoffeeScript or HTML style comment.
+* When using JS or CoffeeScript comments, an additional `=` char is required.
+* When using HTML style comments the prefix `lingon: ` must be used.
+
+Example: index.js
+
+```JavaScript
+//= include 'some/file.js'
+```
+
+Example: index.html
+
+```JavaScript
+<!-- lingon: include 'some/file.html' -->
+```
+
+A directive must exist in the header of a file. The header is defined as the beginning of the file and until the first line that is not a comment or a whitespace.
+
+There are two types of directives:
+
+Name | Parameters | Description
+-----|------------|------------
+include | A glob path | Example globs: `'_app/index.js', '_app/*.js', '_app/**/*.js', '!_app/**/*spec.js'`
+include_self | N/A | include_self is used to control where the contents of the calling file will be placed.<br>For instance if you want to include: 1. A library, 2. The file itself, 3. Another file.
+
+
+
+## 04 Using file processors (Gulp streams)
 
 Lingon uses Gulp.js streams to process files. Lingon already includes a few commonly used processors, but it's simple to add more. A processor is added to a file extension. For instance, I you could add a CoffeeScript processor to the '.coffee' extension by doing: 
 
@@ -141,7 +204,7 @@ lingon.postProcessors.set('less', function(context, globals) {
 });
 ```
 
-## 04 Rewriting file extensions
+## 05 Rewriting file extensions
 
 An extensions rewrite is what happens when your input file "source/index.ejs" is built to "build/index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api: 
 
@@ -262,7 +325,7 @@ lingon.bind('serverConfigure', function() {
 });
 ```
 
-## 05 Configure Lingon
+## 06 Configure Lingon
 
 The Lingon configuration can be directly accessed and mofied from inside the lingon.js file via the `lingon.config` object. The  following properties are available:
 
@@ -279,7 +342,7 @@ server.directoryIndex | *Index file that is to be served per directory when usin
 server.catchAll | *Fallback file that is to be served if the requested one could not be found using the server mode, defaults to `undefined`.*
 server.namespace | *Namespace to handle requests from a different root in server mode (e.g. `http://localhost:5678/my-namespace/index.html`), defaults to `'/'`.*
 
-## 06 Advanced Lingon usage
+## 07 Advanced Lingon usage
 
 #### Allowing the usage of directives (includes) in additional file types
 If you want to use directives (includes) in your own custom file extensions you can just add them to the array `lingon.config.directiveFileTypes`.
