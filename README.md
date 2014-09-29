@@ -9,16 +9,16 @@ Lingon is a single-page application dev tool with a focus on developer happiness
 
 Lingon is a build tool that favors [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration). By employing a similar project structure across your projects you can minimize the amount of build configuration you need to write and maintain. We've borrowed this idea from [middleman](http://middlemanapp.com) and Sprockets. If you already know these tools you'll feel right at home with Lingon.
 
-Under the hood we use Gulp plugins to do the heavy lifting, leveraging an existing community of great plugins.
+Lingon allows you to enjoy the productive workflows from Middleman while leveraging an existing community of great
+gulp.js plugins.
 
-**Key features**
+**Features**
 
-* Minimal, does not ship with bloat.
+* A convention layer on top of Gulp.js.
 * Sprockets-like "include" directive for file concatenation
 * Uses Gulp plugins as Sprockets-like file processors
-* Built in http server (rebuilds files on browser refresh, no flaky fs watch).
+* Built in development server.
 * Out-of-the box support for Less, EJS & Markdown
-* No DSL - Lingon is configured using plain JavaScript
 
 ## Install
 
