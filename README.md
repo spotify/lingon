@@ -74,25 +74,26 @@ Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all feat
 
 ### 4. Run Lingon
 
-Show help:
+```bash
+# Generate a lingon new lingon project:
+lingon new my-project # will clone https://github.com/javoire/lingon-template-minimal
+lingon new my-project -t angular # will clone https://github.com/jpettersson/lingon-ng-template
 
-	$ lingon.js -h
+# Start the server: 
+lingon
 
-Build once and quit:
+# Build once and quit:
+lingon build
 
-	$ lingon.js build
+# Show version: 
+lingon -v
 
-Clean and build:
+# Show help: 
+lingon -h
 
-	$ lingon.js clean build
-
-Start the server:
-
-	$ lingon.js
-
-Start the server on a custom port:
-
-	$ lingon.js server -p 1111
+# Start the server on a custom port:
+lingon server -p 1111
+```
 
 Alternatively, you can execute the `lingon.js` file directly without installing `lingon-cli`.<br>This is useful when building in Jenkins and similar.
 
