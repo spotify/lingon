@@ -14,7 +14,7 @@ gulp.js plugins.
 
 **Features**
 
-* A convention layer on top of Gulp.js.
+* A convention layer on top of node.js streams, compatible with Gulp.js.
 * Sprockets-like "include" directive for file concatenation
 * Uses Gulp plugins as Sprockets-like file processors
 * Built in development server.
