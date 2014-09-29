@@ -107,7 +107,7 @@ The server "task" is the default in Lingon, so just running `./lingon.js` will a
 
 ## 03 Using file directives
 
-File directives are commands living in the header of files. They tell Lingon how to concatenate different files together. Directives are only parsed inside certain file types: `.js`, `.html`, `.less` and `.ejs`. The "Advanced Lingon usage" section below explains how add additional files to parse.
+File directives are commands living in the header of files. They tell Lingon how to concatenate different files together. Directives are only parsed inside certain file types: `.js`, `.html`, `.less` and `.ejs`. The "Advanced Lingon usage" section below explains how to add additional files to parse.
 
 * A directive must be escaped using a js, CoffeeScript or HTML style comment.
 * When using JS or CoffeeScript comments, an additional `=` char is required.
