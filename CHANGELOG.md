@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.0.0
 
 * Feature: Add option to specify a namespace in server mode
 * Feature: Add option to specify a directory index in server mode
