@@ -20,20 +20,40 @@ gulp.js plugins.
 * Built in development server.
 * Out-of-the box support for Less, EJS & Markdown
 
-## Install
+## Get started
 
-Add "lingon" to your package.json or:
+Install lingon command globally:
+```bash
+$ npm install -g lingon-cli
 ```
-$ npm install lingon
+
+## 1. Create a new project
+
+Create a minimal lingon project using the CLI:
+
+```bash
+$ lingon new hello-world
 ```
 
-## Prepare your project
+## 2. Project structure
 
-Create a "lingon.js" file in the root of the project and make it executable:
+Your project looks like this:
 
-	$ chmod +x lingon.js
+```bash
+ $ ls hello-world
+ 
+ .gitignore
+ LICENSE
+ README.md
+ bower.json
+ build
+ lingon.js
+ node_modules
+ package.json
+ source
+```
 
-This file is used to both configure and run Lingon. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
+Lingon is configured and run from a file called `lingon.js`. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
 
 ```JavaScript
 #!/usr/bin/env node
@@ -52,27 +72,29 @@ lingon.config.buildPath = "/dev/null";
 
 Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
 
-## Run Lingon
+## 3. Run Lingon
 
 Show help:
 
-	$ ./lingon.js -h
+	$ lingon.js -h
 
 Build once and quit:
 
-	$ ./lingon.js build
+	$ lingon.js build
 
 Clean and build:
 
-	$ ./lingon.js clean build
+	$ lingon.js clean build
 
 Start the server:
 
-	$ ./lingon.js
+	$ lingon.js
 
 Start the server on a custom port:
 
-	$ ./lingon.js server -p 1111
+	$ lingon.js server -p 1111
+
+Alternatively, you can execute the `lingon.js` file directly without installing `lingon-cli`.<br>This is useful when building in Jenkins and similar.
 
 ## Documentation
 
