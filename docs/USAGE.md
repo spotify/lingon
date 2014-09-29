@@ -2,7 +2,7 @@
 
 This document describes real use cases for Lingon. It starts by covering the basics and proceeds to more advanced uses. The usage documentation is work in progress. Please help out by documenting your use cases in a PR. Thanks!
 
-## Build a basic project
+## 01 Build a basic project
 
 One of the most basic projects imaginable looks like this:
 
@@ -61,7 +61,7 @@ $ ./lingon
 
 Lingon read the source directory and found the index.html file. It was then ouputted to ``./build/index.html``
 
-### Serve the project locally
+## 02 Serve the project locally
 
 One of the primary features of Lingon is the built in http server. It allows you to serve the project locally and view it in your browser. Refreshing will trigger a rebuild, so you can work and instantly see your changes.
 
@@ -73,24 +73,104 @@ To start the built in http server, run:
 
 The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
 
-## The config object
+## 03 Using file processors (Gulp streams)
 
-The Lingon configuration can be directly accessed and mofied from inside the lingon.js file via the `lingon.config` object. The  following properties are available:
+Lingon uses Gulp.js streams to process files. Lingon already includes a few commonly used processors, but it's simple to add more. A processor is added to a file extension. For instance, I you could add a CoffeeScript processor to the '.coffee' extension by doing: 
 
-Name | Description
------|------------
-defaultTask | *Task that will be run when invoking lingon without any arguments, defaults to `'server'`.*
-sourcePath | *Name of the project's source folder, defaults to `'source'`.*
-buildPath | *Name of the project's build folder, defaults to `'build'`.*
-ignorePrefixPattern | *Pattern for ignoring files in the build process, defaults to `new RegExp('\/_')`.*
-directiveFileTypes | *Registered file extensions that will be parsed for directives, defaults to `['js' 'less' 'css' 'ejs' 'html' 'md']`.*
-extensionRewrites | *List of file extensions that will be converted if a postprocessor is registered for them, defaults to `{"ejs": "html", "less": "css", …}`*
-server | *Is itself a config object for the built in server mode.*
-server.directoryIndex | *Index file that is to be served per directory when using the server mode, defaults to `'index.html'`.*
-server.catchAll | *Fallback file that is to be served if the requested one could not be found using the server mode, defaults to `undefined`.*
-server.namespace | *Namespace to handle requests from a different root in server mode (e.g. `http://localhost:5678/my-namespace/index.html`), defaults to `'/'`.*
+```JavaScript 
+#!/usr/bin/env node
 
-## Render EJS templates
+var lingon = require('lingon');
+var coffee = require('gulp-coffee');
+
+// Register the coffee processor on the 'coffee' file extension.
+// It will be executed on all *.coffee files in the source tree.
+lingon.postProcessors.set('coffee', function() {
+	// This function should return a new instance of a gulp stream.
+	// Lingon will create a unique coffee() stream for each .coffee file.
+	return coffee();
+};
+
+```
+
+#### Two kinds of processors
+
+In Lingon there are two types of processors:
+
+* pre-processors: Run on each individual file _before_ concatenation
+* post-processors: Run on each file written to the output path, _after_ concatenation.
+
+#### The full processor API
+
+Use `lingon.preProcessors` and `lingon.postProcessor` to access lingon's processors and invoke `set`, `push`, `unshift` or `remove`. The arguments are
+
+1. a single file extension string or an array of mulitple
+2. an optional regular expression that matches the file name for conditional processors (more about that in the next section)
+3. a factory function that will create the stream pipes
+
+The factory function gets passed in two configuration variables when executed: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
+This function then returns a single (or an array of multiple) stream modifiers that will be piped one after another to their respective files.
+
+```js
+#!/usr/bin/env node
+var lingon = require('lingon');
+var ngHtml2js = require('lingon-ng-html2js');
+var uglify = require('gulp-uglify');
+var less = require('gulp-less');
+
+// registering a new preprocessor and adding it to the end of the file type's processor chain
+lingon.preProcessors.push('ngt', function(context, globals) {
+  // return a single stream modifier
+  return ngHtml2js({ base: 'source' });
+});
+
+// registering a new postprocessor and adding it to the beginning of the file type's processor chain
+lingon.postProcessors.unshift('js', function(context, globals) {
+  // return an array of stream modifiers
+  return [
+    uglify({ outSourceMap: true })
+  ];
+});
+
+// registering a new postprocessor and overwriting any existing ones for the file type
+lingon.postProcessors.set('less', function(context, globals) {
+  // return an array of stream modifiers
+  return [
+    less()
+  ];
+});
+```
+
+## 04 Rewriting file extensions
+
+An extensions rewrite is what happens when your input file "source/index.ejs" is built to "build/index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api: 
+
+**Rewrite all *.fika files to *.js**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtension('fika', 'js');
+```
+
+You can also rewrite multiple extensions at the same time: 
+
+**Rewrite all *.json.ejs files to *.json**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtension('json.ejs', 'json');
+```
+
+If you rewrite to an empty string the extension will simply disappear: 
+
+**Remove .min from all filenames**
+```js
+var lingon = require('lingon');
+
+lingon.rewriteExtension('min', '');
+```
+
+## 05 Render EJS templates
 
 Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module.
 
@@ -182,95 +262,24 @@ lingon.bind('serverConfigure', function() {
 });
 ```
 
-# Render templates inside layouts
+## 05 Configure Lingon
 
-EJS does not support layouts, so this feature has been added natively to Lingon. Lingon supports templates when using `ejs`, `html` or `md` documents. It's possible to mix them, for instance: a Markdown document can be rendered inside a html template.
+The Lingon configuration can be directly accessed and mofied from inside the lingon.js file via the `lingon.config` object. The  following properties are available:
 
-**Limitation:** Layouts can't be rendered inside other layouts.
+Name | Description
+-----|------------
+defaultTask | *Task that will be run when invoking lingon without any arguments, defaults to `'server'`.*
+sourcePath | *Name of the project's source folder, defaults to `'source'`.*
+buildPath | *Name of the project's build folder, defaults to `'build'`.*
+ignorePrefixPattern | *Pattern for ignoring files in the build process, defaults to `new RegExp('\/_')`.*
+directiveFileTypes | *Registered file extensions that will be parsed for directives, defaults to `['js' 'less' 'css' 'ejs' 'html' 'md']`.*
+extensionRewrites | *List of file extensions that will be converted if a postprocessor is registered for them, defaults to `{"ejs": "html", "less": "css", …}`*
+server | *Is itself a config object for the built in server mode.*
+server.directoryIndex | *Index file that is to be served per directory when using the server mode, defaults to `'index.html'`.*
+server.catchAll | *Fallback file that is to be served if the requested one could not be found using the server mode, defaults to `undefined`.*
+server.namespace | *Namespace to handle requests from a different root in server mode (e.g. `http://localhost:5678/my-namespace/index.html`), defaults to `'/'`.*
 
-## Render a simple html layout
-
-Let's render a homepage template inside an index layout.
-
-This example has the following structure:
-
-```
-lingon.js
-source
-  _layouts
-    index.html
-  home.html
-```
-
-#### File: source/_layouts/index.html
-
-The layout is a regular html file that defines an inline lingon yield directive. The yield directive will be replaced with the contents of the template.
-
-**important: It needs to be on it's own line.**
-
-```html
-<html>
-  <head></head>
-  <body>
-    <!-- lingon: yield -->
-  </body>
-</html>
-```
-
-#### File: source/home.html
-
-The template uses a lingon layout directive to define a template to render inside. The path to the template can be either relative from the template file or absolute from the lingon sourcePath.
-
-```html
-<!-- lingon: layout '_layouts/index.ejs' -->
-<h1>Welcome</h1>
-<p>This is a website.</p>
-```
-
-## Render a md file inside a html template
-
-Easy! Follow the above example, but change the home.html template to a Markdown document.
-
-**File: source/home.md**
-
-```markdown
-<!-- lingon: layout '_layouts/index.ejs' -->
-# Welcome
-
-This is a website.
-```
-
-## Advanced Lingon configurations
-
-#### Rewriting file extensions
-
-An extensions rewrite is what happens when your input file "index.ejs" is built to "index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api: 
-
-**Rewrite all *.fika files to *.js**
-```js
-var lingon = require('lingon');
-
-lingon.rewriteExtension('fika', 'js');
-```
-
-You can also rewrite multiple extensions at the same time: 
-
-**Rewrite all *.json.ejs files to *.json**
-```js
-var lingon = require('lingon');
-
-lingon.rewriteExtension('json.ejs', 'json');
-```
-
-If you rewrite to an empty string the extension will simply disappear: 
-
-**Remove .min from all filenames**
-```js
-var lingon = require('lingon');
-
-lingon.rewriteExtension('min', '');
-```
-
+## 06 Advanced Lingon usage
 
 #### Allowing the usage of directives (includes) in additional file types
 If you want to use directives (includes) in your own custom file extensions you can just add them to the array `lingon.config.directiveFileTypes`.
@@ -281,47 +290,6 @@ By default the following file types are registered: `['js', 'less', 'css', 'ejs'
 var lingon = require('lingon');
 
 lingon.config.directiveFileTypes.push('ngt', 'coffee');
-```
-
-#### Register processors
-
-Use `lingon.preProcessors` and `lingon.postProcessor` to access lingon's processors and invoke `set`, `push`, `unshift` or `remove`. The arguments are
-
-1. a single file extension string or an array of mulitple
-2. an optional regular expression that matches the file name for conditional processors (more about that in the next section)
-3. a factory function that will create the stream pipes
-
-The factory function gets passed in two configuration variables when executed: the first one is a context that is seperate for each processed file. The second one is a global one and is shared between all files/processors.
-This function then returns a single (or an array of multiple) stream modifiers that will be piped one after another to their respective files.
-
-```js
-#!/usr/bin/env node
-var lingon = require('lingon');
-var ngHtml2js = require('lingon-ng-html2js');
-var uglify = require('gulp-uglify');
-var less = require('gulp-less');
-
-// registering a new preprocessor and adding it to the end of the file type's processor chain
-lingon.preProcessors.push('ngt', function(context, globals) {
-  // return a single stream modifier
-  return ngHtml2js({ base: 'source' });
-});
-
-// registering a new postprocessor and adding it to the beginning of the file type's processor chain
-lingon.postProcessors.unshift('js', function(context, globals) {
-  // return an array of stream modifiers
-  return [
-    uglify({ outSourceMap: true })
-  ];
-});
-
-// registering a new postprocessor and overwriting any existing ones for the file type
-lingon.postProcessors.set('less', function(context, globals) {
-  // return an array of stream modifiers
-  return [
-    less()
-  ];
-});
 ```
 
 #### Register conditional processor
@@ -350,6 +318,9 @@ lingon.postProcessors.push('js', /^((?!\.min).)*$/, function() {
 ```
 
 #### Register tasks
+
+Lingon uses a "task" abstraction internally in order to queue functions. A plugin developer can hook into this functionality to extend the capabilities of Lingon.
+
 Use `lingon.registerTask('<TASKNAME>', fn, infoObject)` to register a new task. The first argument is the tasks name and it will be used when invoking it from the command line (lingon <TASKNAME>). This is followed by the task function. It gets passed in a callback argument that should be invoked after the task is done so lingon knows when to execute the next task in the queue. The last argument is an info object that will be displayed in the lingon help menu, it consists of a simple general message about the task and then lists all possible arguments with a short description.
 
 ```js
