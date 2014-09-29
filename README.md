@@ -22,12 +22,12 @@ gulp.js plugins.
 
 ## Get started
 
-Install lingon command globally:
+### 1. Install lingon command globally:
 ```bash
 $ npm install -g lingon-cli
 ```
 
-## 1. Create a new project
+### 2. Create a new project
 
 Create a minimal lingon project using the CLI:
 
@@ -35,22 +35,22 @@ Create a minimal lingon project using the CLI:
 $ lingon new hello-world
 ```
 
-## 2. Project structure
+### 3. Project structure
 
 Your project looks like this:
 
 ```bash
  $ ls hello-world
  
+ node_modules/
+ source/
  .gitignore
  LICENSE
  README.md
  bower.json
  build
  lingon.js
- node_modules
  package.json
- source
 ```
 
 Lingon is configured and run from a file called `lingon.js`. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
@@ -72,7 +72,7 @@ lingon.config.buildPath = "/dev/null";
 
 Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
 
-## 3. Run Lingon
+### 4. Run Lingon
 
 Show help:
 
