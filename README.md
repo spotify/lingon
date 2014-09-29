@@ -105,7 +105,7 @@ Alternatively, you can execute the `lingon.js` file directly without installing 
 
 #### [Angular.js application](https://github.com/jpettersson/lingon-ng-template)
 
-#### [Minimal template](https://github.com/javoire/lingon-template-minimal)
+#### [Minimal](https://github.com/javoire/lingon-template-minimal)
 
 ## How does it relate to Make, Gulp, Grunt, X?
 
