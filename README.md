@@ -7,7 +7,7 @@ Lingon is a single-page application dev tool with a focus on developer happiness
 
 ## Overview
 
-Lingon is a tool for building single-page apps. Our thesis is: following a few conventions is better than writing a lot of configuration. We've borrowed this idea from [middleman](http://middlemanapp.com) and Sprockets. If you already know these tools you'll feel right at home with Lingon.
+Lingon is a build tool that favors [convention over configuration](http://en.wikipedia.org/wiki/Convention_over_configuration). By employing a similar project structure across your projects you can minimize the amount of build configuration you need to write and maintain. We've borrowed this idea from [middleman](http://middlemanapp.com) and Sprockets. If you already know these tools you'll feel right at home with Lingon.
 
 Under the hood we use Gulp plugins to do the heavy lifting, leveraging an existing community of great plugins.
 
