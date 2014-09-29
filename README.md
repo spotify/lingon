@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
 
-Lingon is a single-page application dev tool with a focus on developer happiness.
+Lingon is a performant single-page application dev tool that focuses on developer happiness.
 
 ## Overview
 
