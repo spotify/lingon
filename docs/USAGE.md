@@ -10,7 +10,7 @@ So far we've been talking a lot about conventions. Here they are in fairly short
 
 Common example: Our project consists of many JS files and we want to output one file with everything in it. The solution is to use "directives".
 
-Directives are Lingon-specific commands that live in the header of certain files (js, html, ejs). The commands are hidded using the comments of the source file and look like this:
+Directives are Lingon-specific commands that live in the header of certain files (js, html, ejs). The commands are prefixed using the comment style of the source file and look like this:
 
 **source/app.js**
 ```JavaScript
