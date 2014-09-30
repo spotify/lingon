@@ -37,3 +37,8 @@ setup() {
   [ -f 'build/registered.normal' ]
   [ ! -f 'build/registered.rewritten' ]
 }
+
+@test "rewrite-extensions project: multiple segment extensions take precedence" {
+  [ -f 'build/lib.js' ]
+  [ ! -f 'build/lib.html' ]
+}

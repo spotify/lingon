@@ -26,3 +26,5 @@ lingon.preProcessors.push('boo', function(params) {
 
 lingon.rewriteExtension('normal', 'rewritten');
 lingon.clearExtensionRewrite('normal');
+
+lingon.rewriteExtension('js.ejs', 'js', {always: true});
