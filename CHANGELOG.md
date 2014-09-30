@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: The ExtensionRewriter was not able to rewrite multiple segments: For instance "js.ejs" => "js".
+
 ## Version 2.0.0
 
 * Feature: Add option to specify a namespace in server mode
