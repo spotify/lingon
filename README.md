@@ -1,4 +1,6 @@
 # lingon
+![Image of Lingon berries]
+(https://farm3.staticflickr.com/2548/3873990304_1d2bd40ebc_m.jpg)<br>
 
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
@@ -14,7 +16,7 @@ gulp.js plugins.
 
 **Features**
 
-* A convention layer on top of Gulp.js.
+* A convention layer on top of node.js streams, compatible with Gulp.js.
 * Sprockets-like "include" directive for file concatenation
 * Uses Gulp plugins as Sprockets-like file processors
 * Built in development server.
@@ -23,6 +25,7 @@ gulp.js plugins.
 ## Get started
 
 ### 1. Install lingon command globally:
+
 ```bash
 $ npm install -g lingon-cli
 ```
@@ -30,17 +33,26 @@ $ npm install -g lingon-cli
 ### 2. Create a new project
 
 Create a minimal lingon project using the CLI:
-
 ```bash
 $ lingon new hello-world
 ```
 
-### 3. Project structure
+### 3. Run Lingon server
+
+```bash
+$ cd hello-world
+$ lingon
+
+[ Lingon ] Working directory: /path/to/hello-world
+[ Lingon ] http server listening on: 0.0.0.0:5678
+```
+
+### Project structure
 
 Your project looks like this:
 
 ```bash
- $ ls hello-world
+ $ ls
  
  node_modules/
  source/
@@ -72,27 +84,28 @@ lingon.config.buildPath = "/dev/null";
 
 Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
 
-### 4. Run Lingon
+### Lingon tasks
 
-Show help:
+```bash
+# Generate a lingon new lingon project:
+lingon new my-project # will clone https://github.com/javoire/lingon-template-minimal
+lingon new my-project -t angular # will clone https://github.com/jpettersson/lingon-ng-template
 
-	$ lingon.js -h
+# Start the server: 
+lingon
 
-Build once and quit:
+# Build once and quit:
+lingon build
 
-	$ lingon.js build
+# Show version: 
+lingon -v
 
-Clean and build:
+# Show help: 
+lingon -h
 
-	$ lingon.js clean build
-
-Start the server:
-
-	$ lingon.js
-
-Start the server on a custom port:
-
-	$ lingon.js server -p 1111
+# Start the server on a custom port:
+lingon server -p 1111
+```
 
 Alternatively, you can execute the `lingon.js` file directly without installing `lingon-cli`.<br>This is useful when building in Jenkins and similar.
 
@@ -102,8 +115,9 @@ Alternatively, you can execute the `lingon.js` file directly without installing 
 
 ## Project templates
 
-### [Angular.js application](https://github.com/jpettersson/lingon-ng-template)
+#### [Angular.js application](https://github.com/jpettersson/lingon-ng-template)
 
+#### [Minimal](https://github.com/javoire/lingon-template-minimal)
 
 ## How does it relate to Make, Gulp, Grunt, X?
 
@@ -128,3 +142,6 @@ Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 Licensed under the MIT license.
+
+*Lingon photo by [thriol](https://www.flickr.com/photos/thriol/3873990304/sizes/o/)*
+
