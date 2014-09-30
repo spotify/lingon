@@ -24,7 +24,7 @@ gulp.js plugins.
 
 ## Get started
 
-### 1. Install lingon command globally:
+### 1. Install lingon CLI globally
 
 ```bash
 $ npm install -g lingon-cli
