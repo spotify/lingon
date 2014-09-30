@@ -1,4 +1,6 @@
 # lingon
+![Image of Lingon berries]
+(https://farm3.staticflickr.com/2548/3873990304_1d2bd40ebc_m.jpg)<br>
 
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
@@ -140,3 +142,6 @@ Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 Licensed under the MIT license.
+
+*Lingon photo by [thriol](https://www.flickr.com/photos/thriol/3873990304/sizes/o/)*
+
