@@ -23,6 +23,7 @@ gulp.js plugins.
 ## Get started
 
 ### 1. Install lingon command globally:
+
 ```bash
 $ npm install -g lingon-cli
 ```
@@ -30,17 +31,26 @@ $ npm install -g lingon-cli
 ### 2. Create a new project
 
 Create a minimal lingon project using the CLI:
-
 ```bash
 $ lingon new hello-world
 ```
 
-### 3. Project structure
+### 3. Run Lingon server
+
+```bash
+$ cd hello-world
+$ lingon
+
+[ Lingon ] Working directory: /path/to/hello-world
+[ Lingon ] http server listening on: 0.0.0.0:5678
+```
+
+### Project structure
 
 Your project looks like this:
 
 ```bash
- $ ls hello-world
+ $ ls
  
  node_modules/
  source/
@@ -72,7 +82,7 @@ lingon.config.buildPath = "/dev/null";
 
 Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all features.
 
-### 4. Run Lingon
+### Lingon tasks
 
 ```bash
 # Generate a lingon new lingon project:
