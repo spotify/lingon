@@ -2,8 +2,9 @@
 
 ## HEAD
 
-## Version 2.0.1
+## Version 2.1.0
 
+* Feature: Lingon.build now writes to files disk per default (again). The server is explicitly overwriting this behaviour to serve files directly over http.
 * Fix: The ExtensionRewriter was not able to rewrite multiple segments: For instance "js.ejs" => "js".
 
 ## Version 2.0.0
