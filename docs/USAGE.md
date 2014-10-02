@@ -407,7 +407,9 @@ lingon.registerTask('imagemin', function(callback) {
   };
   lingon.postProcessors.push(['jpg', 'jpeg', 'png', 'gif', 'svg'], optimizeImages);
 
-  lingon.build(callback, null);
+  lingon.build({
+    'callback': callback
+  });
 }, {
   message: 'Optimize images (directly in the source folder!)',
   arguments: {
