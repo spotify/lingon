@@ -4,7 +4,7 @@ var ExtensionRewriter         = require('../../lib/utils/extensionRewriter');
 test("ExtensionRewriter: can perform single transform", function(t) {
   var source = 'index.coffee';
 
-  var extensionMap = {'coffee': 'js'};
+  var extensionMap = {'coffee': {rewrite: 'js'}};
 
   var dest = ExtensionRewriter.transform({
     filename: source,
@@ -24,8 +24,8 @@ test("ExtensionRewriter: can transform multi-segmented extensions", function(t) 
   // on token size. Multiple-extension tokens should 
   // be processed first.
   var extensionMap = {
-    'ejs': 'html',
-    'json.ejs': 'json'
+    'ejs': {rewrite: 'html'},
+    'json.ejs': {rewrite: 'json'}
   };
 
   var dest = ExtensionRewriter.transform({
@@ -46,7 +46,7 @@ test("ExtensionRewriter: can remove an extension", function(t) {
   // on token size. Multiple-extension tokens should 
   // be processed first.
   var extensionMap = {
-    'min': ''
+    'min': {rewrite: ''}
   };
 
   var dest = ExtensionRewriter.transform({
@@ -63,12 +63,12 @@ test("ExtensionRewriter: can reverse transform a destination filename to a list 
   var dest = 'index.ignored.html';
 
   var extensionMap = {
-    "ejs": "html",
-    "haml": "html",
-    "jade": "html",
-    "kit": "html",
-    "md": "html",
-    "slim": "html"
+    "ejs": {rewrite: "html"},
+    "haml": {rewrite: "html"},
+    "jade": {rewrite: "html"},
+    "kit": {rewrite: "html"},
+    "md": {rewrite: "html"},
+    "slim": {rewrite: "html"}
   };
 
   var source = ExtensionRewriter.reverseTransform({
