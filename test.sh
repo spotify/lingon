@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Set up submodule if not already present
 git submodule init
