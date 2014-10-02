@@ -2,6 +2,10 @@
 
 ## HEAD
 
+## Version 2.1.1
+
+* Fix: ExtensionRewriter: The RegExp was not matching the . (dot) in an extension.
+
 ## Version 2.1.0
 
 * Feature: Lingon.build now writes to files disk per default (again). The server is explicitly overwriting this behaviour to serve files directly over http.
