@@ -2,6 +2,8 @@
 
 ## HEAD
 
+## Version 2.0.1
+
 * Fix: The ExtensionRewriter was not able to rewrite multiple segments: For instance "js.ejs" => "js".
 
 ## Version 2.0.0
