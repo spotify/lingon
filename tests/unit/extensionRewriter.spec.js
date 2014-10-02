@@ -83,3 +83,47 @@ test("ExtensionRewriter: can reverse transform a destination filename to a list 
   t.end();
 });
 
+test("ExtensionRewriter: only rewrites the extension (does not touch the filename)", function(t){
+  var source = 'some-important-results.md';
+
+  var extensionMap = {
+    'md': {rewrite: 'html'},
+    'ts': {rewrite: 'js'}
+  };
+
+  var dest = ExtensionRewriter.transform({
+    filename: source,
+    extensionMap: extensionMap
+  });
+
+  t.equals(dest, 'some-important-results.html');
+
+  t.end();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
