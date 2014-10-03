@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/jpettersson/lingon.png?branch=master)](https://travis-ci.org/jpettersson/lingon)
 [![Dependency Status](https://david-dm.org/jpettersson/lingon.png)](https://david-dm.org/jpettersson/lingon)
 
-Lingon is a performant single-page application dev tool that focuses on developer happiness.
+Lingon is a performant single-page application dev tool that focuses on developer happiness. At Spotify we use Lingon to build many small to medium sized Angular.js applications for internal use.
 
 ## Overview
 
