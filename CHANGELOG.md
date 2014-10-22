@@ -1,6 +1,9 @@
 # Changelog
 
-## HEAD
+## Version 2.1.2
+
+* Fix: Add clearer error message for server port collision
+* Fix: Replace deprecated express res.send syntax
 
 ## Version 2.1.1
 
