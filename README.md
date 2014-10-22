@@ -54,7 +54,7 @@ Your project looks like this:
 
 ```bash
  $ ls
- 
+
  node_modules/
  source/
  .gitignore
@@ -92,16 +92,16 @@ Check out the [usage documentation](docs/USAGE.md) for a walkthrough of all feat
 lingon new my-project # will clone https://github.com/javoire/lingon-template-minimal
 lingon new my-project -t angular # will clone https://github.com/jpettersson/lingon-ng-template
 
-# Start the server: 
+# Start the server:
 lingon
 
 # Build once and quit:
 lingon build
 
-# Show version: 
+# Show version:
 lingon -v
 
-# Show help: 
+# Show help:
 lingon -h
 
 # Start the server on a custom port:
@@ -142,7 +142,7 @@ We'd love some help!<br />
 Take a look at our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
-Licensed under the MIT license.
+Licensed under the Apache license.
 
 *Lingon photo by [thriol](https://www.flickr.com/photos/thriol/3873990304/sizes/o/)*
 
