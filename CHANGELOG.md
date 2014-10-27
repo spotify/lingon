@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: Use stderr for error messages
+
 ## Version 2.1.2
 
 * Fix: Add clearer error message for server port collision
