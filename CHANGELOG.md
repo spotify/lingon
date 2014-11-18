@@ -1,7 +1,8 @@
 # Changelog
 
-## HEAD
+## Version 2.1.3
 
+* Fix: Bump dependencies
 * Fix: Use stderr for error messages
 
 ## Version 2.1.2
