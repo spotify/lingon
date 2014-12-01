@@ -29,7 +29,9 @@ setup() {
   download="curl --silent -o"
 
   ${download} tmp/index.html $server/
+  ${download} tmp/index_querystring.html $server/?foo=bar
   ${download} tmp/fallback.html $server/something/that/does/not/exist
+  ${download} tmp/fallback_querystring.html $server/something/that/does/not/exist?foo=bar
 
   # Terminate server
   kill $LINGON_JOB_PID
@@ -37,8 +39,12 @@ setup() {
   # Did we get everything?
   diff tmp/index.html fixtures/default.html
   [ $? -eq 0 ]
+  diff tmp/index_querystring.html fixtures/default.html
+  [ $? -eq 0 ]
 
   diff tmp/fallback.html fixtures/catch-all.html
+  [ $? -eq 0 ]
+  diff tmp/fallback_querystring.html fixtures/catch-all.html
   [ $? -eq 0 ]
 }
 
