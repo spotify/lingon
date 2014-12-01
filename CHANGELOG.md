@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 2.1.4
+
+* Fix: Server address in console output is clickable
+* Fix: Having query strings prevented the directory index to be served
+
 ## Version 2.1.3
 
 * Fix: Bump dependencies
