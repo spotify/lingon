@@ -152,7 +152,7 @@ lingon.postProcessors.set('coffee', function() {
 	// This function should return a new instance of a gulp stream.
 	// Lingon will create a unique coffee() stream for each .coffee file.
 	return coffee();
-};
+});
 
 ```
 
