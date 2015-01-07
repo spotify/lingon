@@ -148,7 +148,7 @@ var coffee = require('gulp-coffee');
 
 // Register the coffee processor on the 'coffee' file extension.
 // It will be executed on all *.coffee files in the source tree.
-lingon.postProcessors.set('coffee', function() {
+lingon.preProcessors.set('coffee', function() {
 	// This function should return a new instance of a gulp stream.
 	// Lingon will create a unique coffee() stream for each .coffee file.
 	return coffee();
