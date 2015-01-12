@@ -357,7 +357,7 @@ lingon.config.directiveFileTypes.push('ngt', 'coffee');
 
 #### Register conditional processor
 
-Sometimes a processor is wanted only under certain conditions so the `push` and `unshift` functions accept an optional regular expression before the factory function. Only file names that meet this regular expression will register the processor.
+Sometimes a processor is wanted only under certain conditions so the `set`, `push`, `unshift` and `remove` functions accept an optional regular expression before the factory function. Only files that meet this regular expression will register the processor. By default only the file name itself will be returned but it can be configured to use the whole path form the root folder of the project.
 
 Additionally some processors are only needed in certain tasks, in that case we can make use of the `lingon.task` variable that contains the name of the current running task to return the array of stream modifiers.
 
@@ -365,6 +365,10 @@ Additionally some processors are only needed in certain tasks, in that case we c
 #!/usr/bin/env node
 var lingon = require('lingon');
 var uglify = require('gulp-uglify');
+
+// match the regexp against the full path from the project's root
+lingon.preProcessors.setMatchFullPath(true);
+lingon.postProcessors.setMatchFullPath(true);
 
 // only process files that do not contain ".min" in their name
 lingon.postProcessors.push('js', /^((?!\.min).)*$/, function() {

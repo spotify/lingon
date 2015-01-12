@@ -2,7 +2,7 @@
 
 ## HEAD
 
-* Feature: Pass in complete file path to conditional processor's regex instead of just file name
+* Feature: Add option to pass in complete file path to conditional processor's regexp instead of just the file name
 * Refactor: Add info/error log helpers
 
 ## Version 2.1.4
