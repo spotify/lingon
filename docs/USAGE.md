@@ -138,9 +138,9 @@ include_self | N/A | include_self is used to control where the contents of the c
 
 ## 04 Using file processors (Gulp streams)
 
-Lingon uses Gulp.js streams to process files. Lingon already includes a few commonly used processors, but it's simple to add more. A processor is added to a file extension. For instance, I you could add a CoffeeScript processor to the '.coffee' extension by doing: 
+Lingon uses Gulp.js streams to process files. Lingon already includes a few commonly used processors, but it's simple to add more. A processor is added to a file extension. For instance, I you could add a CoffeeScript processor to the '.coffee' extension by doing:
 
-```JavaScript 
+```JavaScript
 #!/usr/bin/env node
 
 var lingon = require('lingon');
@@ -206,7 +206,7 @@ lingon.postProcessors.set('less', function(context, globals) {
 
 ## 05 Rewriting file extensions
 
-An extensions rewrite is what happens when your input file "source/index.ejs" is built to "build/index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api: 
+An extensions rewrite is what happens when your input file "source/index.ejs" is built to "build/index.html". Lingon include sane defaults to handle the most common files (ejs, less, coffee, etc). However, you can also add your own extension rewrites using the following api:
 
 **Rewrite all *.fika files to *.js**
 ```js
@@ -215,7 +215,7 @@ var lingon = require('lingon');
 lingon.rewriteExtension('fika', 'js');
 ```
 
-You can also rewrite multiple extensions at the same time: 
+You can also rewrite multiple extensions at the same time:
 
 **Rewrite all *.json.ejs files to *.json**
 ```js
@@ -224,7 +224,7 @@ var lingon = require('lingon');
 lingon.rewriteExtension('json.ejs', 'json');
 ```
 
-If you rewrite to an empty string the extension will simply disappear: 
+If you rewrite to an empty string the extension will simply disappear:
 
 **Remove .min from all filenames**
 ```js
@@ -233,7 +233,7 @@ var lingon = require('lingon');
 lingon.rewriteExtension('min', '');
 ```
 
-## 05 Render EJS templates
+## 06 Render EJS templates
 
 Lingon comes with out of the box support for EJS templates using the [gulp-ejs](https://github.com/rogeriopvl/gulp-ejs) module.
 
@@ -280,8 +280,8 @@ var es = require('event-stream');
 var spawn  = require('child_process').spawn;
 
 lingon.preProcessors.unshift('ejs', function(params) {
-  // This functions takes an object of named params: 
-  // params.global    The file-specific context object  
+  // This functions takes an object of named params:
+  // params.global    The file-specific context object
   // params.context   The global data object
 
   return es.map(function(file, cb) {
@@ -325,7 +325,7 @@ lingon.bind('serverConfigure', function() {
 });
 ```
 
-## 06 Configure Lingon
+## 07 Configure Lingon
 
 The Lingon configuration can be directly accessed and mofied from inside the lingon.js file via the `lingon.config` object. The  following properties are available:
 
@@ -342,7 +342,7 @@ server.directoryIndex | *Index file that is to be served per directory when usin
 server.catchAll | *Fallback file that is to be served if the requested one could not be found using the server mode, defaults to `undefined`.*
 server.namespace | *Namespace to handle requests from a different root in server mode (e.g. `http://localhost:5678/my-namespace/index.html`), defaults to `'/'`.*
 
-## 07 Advanced Lingon usage
+## 08 Advanced Lingon usage
 
 #### Allowing the usage of directives (includes) in additional file types
 If you want to use directives (includes) in your own custom file extensions you can just add them to the array `lingon.config.directiveFileTypes`.
