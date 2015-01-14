@@ -1,5 +1,10 @@
 # Changelog
 
+## HEAD
+
+* Feature: Add option to pass in complete file path to conditional processor's regexp instead of just the file name
+* Refactor: Add info/error log helpers
+
 ## Version 2.1.4
 
 * Fix: Server address in console output is clickable
