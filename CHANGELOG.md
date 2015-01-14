@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.2.0
 
 * Feature: Add option to pass in complete file path to conditional processor's regexp instead of just the file name
 * Refactor: Add info/error log helpers
