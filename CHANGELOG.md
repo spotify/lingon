@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: Output a clearer error message if a port conflict occurs during server startup
+
 ## Version 2.2.0
 
 * Feature: Add option to pass in complete file path to conditional processor's regexp instead of just the file name
