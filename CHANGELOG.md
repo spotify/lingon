@@ -3,6 +3,7 @@
 ## HEAD
 
 * Fix: Output a clearer error message if a port conflict occurs during server startup
+* Fix: URLs containing reserved keywords now work
 
 ## Version 2.2.0
 
