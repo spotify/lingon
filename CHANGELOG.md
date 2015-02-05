@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.2.1
 
 * Fix: Output a clearer error message if a port conflict occurs during server startup
 * Fix: URLs containing reserved keywords now work
