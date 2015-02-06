@@ -19,8 +19,8 @@ setup() {
 
   # Check that correct output files exist
   [ -f 'build/symlinked-file.css' ]
-  [ -f 'build/symlinked-folder/empty.css' ]
-  [ -f 'build/symlinked-folder/vendor.css' ]
+  [ -f 'build/hardlinked-file.css' ]
+  [ -f 'build/symlinked-folder/simple.css' ]
 }
 
 @test "symlinks: can serve files over http" {
@@ -45,8 +45,8 @@ setup() {
   download="curl --silent -o"
 
   ${download} tmp/symlinked-file.css $server/symlinked-file.css
-  ${download} tmp/symlinked-folder-empty.css $server/symlinked-folder/empty.css
-  ${download} tmp/symlinked-folder-vendor.css $server/symlinked-folder/vendor.css
+  ${download} tmp/hardlinked-file.css $server/hardlinked-file.css
+  ${download} tmp/symlinked-folder-simple.css $server/symlinked-folder/simple.css
 
   # Terminate server
   kill $LINGON_JOB_PID
@@ -55,9 +55,9 @@ setup() {
   diff tmp/symlinked-file.css build/symlinked-file.css
   [ $? -eq 0 ]
 
-  diff tmp/symlinked-folder-empty.css build/symlinked-folder/empty.css
+  diff tmp/hardlinked-file.css build/hardlinked-file.css
   [ $? -eq 0 ]
 
-  diff tmp/symlinked-folder-vendor.css build/symlinked-folder/vendor.css
+  diff tmp/symlinked-folder-simple.css build/symlinked-folder/simple.css
   [ $? -eq 0 ]
 }
