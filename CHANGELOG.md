@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.2.2
+
+* Fix: Symlinks are being followed again when traversing the source tree
+
 ## Version 2.2.1
 
 * Fix: Output a clearer error message if a port conflict occurs during server startup
