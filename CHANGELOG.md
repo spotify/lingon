@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Feature: Add namespace to printed server address
+
 ## Version 2.2.3
 
 * Fix: Print out `localhost` instead of `0.0.0.0` server address, since it is supposed to be a unrouteable URL
