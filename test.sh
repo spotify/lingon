@@ -7,15 +7,21 @@ git submodule update
 
 # Run all bats tests
 
-if [ $1 ]; 
+if [ $1 ];
 then
   target=$1
 else
   target='tests/system/*'
 fi
 
+echo "Running code linter (jshint)"
+./node_modules/.bin/jshint lib/**/*.js
+
+echo "Running code style test (jscs)"
+./node_modules/.bin/jscs lib/**/*.js --reporter=inline
+
 echo "Running unit tests"
-./node_modules/tape/bin/tape tests/unit/*
+./node_modules/.bin/tape tests/unit/*
 
 echo "Running system tests"
 ./tests/vendor/bats/bin/bats $target
