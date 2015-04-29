@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-var lingon = require('../../../lib/boot');
+'use strict';
+
+var lingon    = require('../../../lib/boot');
 var ngHtml2js = require('lingon-ng-html2js');
 
 lingon.preProcessors.push('ngt', function() {
