@@ -1,7 +1,7 @@
 {
   "name": "lingon",
   "description": "A minimal static site generator inspired by Middleman and Sprockets, compatible with gulp plugins.",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "homepage": "https://github.com/spotify/lingon",
   "author": {
     "name": "Jonathan Pettersson",

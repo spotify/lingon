@@ -1,7 +1,8 @@
 # Changelog
 
-## HEAD
+## Version 2.2.4
 
+* Fix: Set file's base path to source folder instead of parent folder
 * Feature: Add namespace to printed server address
 
 ## Version 2.2.3
