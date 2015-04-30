@@ -12,6 +12,9 @@ setup() {
   diff build/cyclic.js fixtures/cyclic.js
   [ $? -eq 0 ]
 
+  diff build/cyclic.html fixtures/cyclic.html
+  [ $? -eq 0 ]
+
   diff build/strangeloop.js fixtures/strangeloop.js
   [ $? -eq 0 ]
 }

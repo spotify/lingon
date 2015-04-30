@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: directiveStream now puts comments in `.js` files only, when finding cyclic dependencies
+
 ## Version 2.2.5
 
 * Fix: Lingon source code style follows the Google JS styleguide
