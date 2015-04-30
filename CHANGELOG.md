@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 2.2.5
+
+* Fix: Lingon source code style follows the Google JS styleguide
+* Adding autoreleasing using travis-ci
+
 ## Version 2.2.4
 
 * Fix: Set file's base path to source folder instead of parent folder
