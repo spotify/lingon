@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var es = require('event-stream');
 var lingon = require('../../../lib/boot');
 var spawn  = require('child_process').spawn;
@@ -10,11 +12,11 @@ lingon.preProcessors.unshift('ejs', function(params) {
         params.context.file
       ]);
 
-      ls.stdout.on('data', function (data) {
+      ls.stdout.on('data', function(data) {
         params.context.metadata = data.toString().trim();
       });
 
-      ls.on('close', function (data) {
+      ls.on('close', function(data) {
         cb(null, file);
       });
     });

@@ -60,6 +60,8 @@
     "vinyl-fs": "~1.0.0"
   },
   "devDependencies": {
+    "jscs": "^1.13.0",
+    "jshint": "^2.7.0",
     "lingon-ng-html2js": "~0.1.6"
   },
   "keywords": [

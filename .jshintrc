@@ -1,13 +1,12 @@
 {
   "curly": true,
-  "eqeqeq": true,
-  "immed": true,
+  "funcscope": true,
   "latedef": "nofunc",
-  "newcap": true,
   "noarg": true,
-  "sub": true,
+  "nonbsp": true,
+  "strict": true,
   "undef": true,
-  "unused": true,
+  "unused": "vars",
   "boss": true,
   "eqnull": true,
   "node": true
