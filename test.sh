@@ -15,10 +15,10 @@ else
 fi
 
 echo "Running code linter (jshint)"
-./node_modules/.bin/jshint lib/**/*.js
+./node_modules/.bin/jshint lib/
 
 echo "Running code style test (jscs)"
-./node_modules/.bin/jscs lib/**/*.js --reporter=inline
+./node_modules/.bin/jscs lib/ --reporter=inline
 
 echo "Running unit tests"
 ./node_modules/.bin/tape tests/unit/*

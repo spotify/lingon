@@ -1,18 +1,25 @@
 # Changelog
 
+## HEAD
+
+* Feature: Extended Google JS styleguide to be a bit more strict
+* Fix: Follow code style for all files in `lib/` directory
+* Fix: jshint/jscs were not executed on the correct folder
+* Fix: directiveStream now puts comments in `.js` files only, when finding cyclic dependencies
+
 ## Version 2.2.5
 
-* Fix: Lingon source code style follows the Google JS styleguide
-* Adding autoreleasing using travis-ci
+* Feature: Lingon source code style follows the Google JS styleguide
+* Feature: Add autoreleasing using travis-ci
 
 ## Version 2.2.4
 
-* Fix: Set file's base path to source folder instead of parent folder
 * Feature: Add namespace to printed server address
+* Fix: Set file's base path to source folder instead of parent folder
 
 ## Version 2.2.3
 
-* Fix: Print out `localhost` instead of `0.0.0.0` server address, since it is supposed to be a unrouteable URL
+* Fix: Print out `localhost` instead of `0.0.0.0` server address, since it is supposed to be an unrouteable URL
 
 ## Version 2.2.2
 
