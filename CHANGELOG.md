@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.2.6
 
 * Feature: Extended Google JS styleguide to be a bit more strict
 * Fix: Follow code style for all files in `lib/` directory
