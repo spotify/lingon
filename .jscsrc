@@ -1,3 +1,14 @@
 {
-  "preset": "google"
+  "preset": "google",
+
+  "requireAlignedObjectValues": "all",
+  "disallowSpacesInCallExpression": true,
+  "disallowYodaConditions": true,
+  "requireBlocksOnNewline": 1,
+  "requireCommaBeforeLineBreak": true,
+  "requireLineBreakAfterVariableAssignment": true,
+  "requireParenthesesAroundIIFE": true,
+  "requireSemicolons": true,
+  "disallowSpaceBeforeBinaryOperators": [","],
+  "disallowSpaceBeforePostfixUnaryOperators": true
 }
