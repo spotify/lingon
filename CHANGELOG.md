@@ -1,6 +1,10 @@
 # Changelog
 
-## Version 2.2.6
+## Version 2.2.7
+
+* Fix: Version 2.2.6 was corrupted in NPM
+
+## Version 2.2.6 (unpublished)
 
 * Feature: Extended Google JS styleguide to be a bit more strict
 * Fix: Follow code style for all files in `lib/` directory
