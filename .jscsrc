@@ -2,6 +2,8 @@
   "preset": "google",
 
   "requireAlignedObjectValues": "all",
+  "disallowSpaceBeforeBinaryOperators": [","],
+  "disallowSpaceBeforePostfixUnaryOperators": true,
   "disallowSpacesInCallExpression": true,
   "disallowYodaConditions": true,
   "requireBlocksOnNewline": 1,
@@ -9,6 +11,8 @@
   "requireLineBreakAfterVariableAssignment": true,
   "requireParenthesesAroundIIFE": true,
   "requireSemicolons": true,
-  "disallowSpaceBeforeBinaryOperators": [","],
-  "disallowSpaceBeforePostfixUnaryOperators": true
+  "validateQuoteMarks": {
+    "escape": true,
+    "mark": "'"
+  }
 }
