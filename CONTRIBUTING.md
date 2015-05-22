@@ -40,7 +40,7 @@ This makes sure we announce the change in the next release.
 
 [pr]: https://github.com/jpettersson/lingon/compare/
 
-TravisCI will run the test suite and let you know that you've done and awesome job. If travis says A-OK, your work is done for now. At this point you're waiting on us. We like to at least comment on pull requests
+TravisCI will run the test suite and let you know that you've done an awesome job. If travis says A-OK, your work is done for now. At this point you're waiting on us. We like to at least comment on pull requests
 within two business days (and, typically, one business day). We may suggest
 some changes or improvements or alternatives. We promise to respond to all PRs.
 
