@@ -53,17 +53,16 @@ $ lingon
 Your project looks like this:
 
 ```bash
- $ ls
+$ ls
 
- node_modules/
- source/
- .gitignore
- LICENSE
- README.md
- bower.json
- build
- lingon.js
- package.json
+node_modules/
+source/
+.gitignore
+package.json
+bower.json
+lingon.js
+README.md
+LICENSE
 ```
 
 Lingon is configured and run from a file called `lingon.js`. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
