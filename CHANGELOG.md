@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.2.8
 
 * Fix: An empty extension (two following .) resulted in an NPE
 
