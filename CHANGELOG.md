@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## Version 2.2.9
 
 * Fix: Decode URI safe reqested file in server mode
 
