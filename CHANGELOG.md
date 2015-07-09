@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: Decode URI safe reqested file in server mode
+
 ## Version 2.2.8
 
 * Fix: An empty extension (two following .) resulted in an NPE

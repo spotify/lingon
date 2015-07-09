@@ -21,7 +21,7 @@ setup() {
   [ -f 'build-renamed/index.html' ]
   [ -f 'build-renamed/index.js' ]
   [ -f 'build-renamed/index.css' ]
-  [ -f 'build-renamed/image..png' ]
+  [ -f 'build-renamed/im age..png' ]
   [ -f 'build-renamed/lib/lib.js' ]
   [ ! -d 'build-renamed/_vendor' ]
 }
@@ -58,7 +58,7 @@ setup() {
   ${download} tmp/index.html $server/index.html
   ${download} tmp/index.js $server/index.js
   ${download} tmp/index.css $server/index.css
-  ${download} tmp/image..png $server/image..png
+  ${download} tmp/im\ age..png $server/im%20age..png
   ${download} tmp/lib.js $server/lib/lib.js
 
   # Terminate server
@@ -74,7 +74,7 @@ setup() {
   diff tmp/index.css build-renamed/index.css
   [ $? -eq 0 ]
 
-  diff tmp/image..png build-renamed/image..png
+  diff tmp/im\ age..png build-renamed/im\ age..png
   [ $? -eq 0 ]
 
   diff tmp/lib.js build-renamed/lib/lib.js
