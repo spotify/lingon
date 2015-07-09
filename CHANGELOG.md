@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+* Fix: An empty extension (two following .) resulted in an NPE
+
 ## Version 2.2.7
 
 * Fix: Version 2.2.6 was corrupted in NPM
