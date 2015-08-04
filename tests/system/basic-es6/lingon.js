@@ -16,7 +16,7 @@ lingon.preProcessors.push('js', function(params) {
 
   return es.map(function(file, cb) {
     builder.buildSFX(
-      params.context.file
+      params.context.file, {runtime: false}
     )
     .then(function(output) {
       file.contents = new Buffer(output.source);
