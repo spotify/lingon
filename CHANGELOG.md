@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 2.2.10
+
+* Fix: Log errors to the console also in server mode
+* Fix: Set proper NPM license filed
+
 ## Version 2.2.9
 
 * Fix: Decode URI safe reqested file in server mode
