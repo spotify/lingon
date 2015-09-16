@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/spotify/lingon/issues"
   },
-  "licenses": [
+  "license": [
     {
       "type": "Apache",
       "url": "https://github.com/spotify/lingon/blob/master/LICENSE"
