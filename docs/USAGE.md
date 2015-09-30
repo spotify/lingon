@@ -104,7 +104,7 @@ $ ./lingon
 
 Lingon read the source directory and found the index.html file. It was then ouputted to ``./build/index.html``
 
-## <a name="chapter-02">02 Serve the project likeocally</a>
+## <a name="chapter-02">02 Serve the project locally</a>
 
 One of the primary features of Lingon is the built in http server. It allows you to serve the project locally and view it in your browser. Refreshing will trigger a rebuild, so you can work and instantly see your changes.
 
