@@ -22,12 +22,7 @@
   "bugs": {
     "url": "https://github.com/spotify/lingon/issues"
   },
-  "license": [
-    {
-      "type": "Apache",
-      "url": "https://github.com/spotify/lingon/blob/master/LICENSE"
-    }
-  ],
+  "license": "Apache-2.0",
   "main": "lib/boot",
   "engines": {
     "node": ">= 0.9"
