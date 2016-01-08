@@ -9,10 +9,17 @@ var Builder = require('systemjs-builder');
 var es = require('event-stream');
 
 var builder = new Builder(lingon.rootPath, {
-  defaultJSExtensions : true,
-
-  // opt in to Babel for transpiling over Traceur
-  transpiler          : 'babel',
+  defaultJSExtensions: true,
+  transpiler: 'babel',
+  // paths: {
+  //   '*': './bower_components/*',
+  //   'source/*': './source/*'
+  // },
+  // meta: {
+  //   '*': { format: 'global' }, // we assume that all bower components are defined on the global scope
+  //   'source/*': { format: 'esm' }
+  // },
+  // packageConfigPaths: ['./bower_components/*/bower.json'],
 });
 
 lingon.postProcessors.push('js', function() {
@@ -20,6 +27,7 @@ lingon.postProcessors.push('js', function() {
     var filePath = path.join(lingon.config.sourcePath,
         path.relative(file.base, file.path));
 
+    builder.reset();
     builder.buildStatic(filePath, {runtime: true})
       .then(function(output) {
         file.contents = new Buffer(output.source);

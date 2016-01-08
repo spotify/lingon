@@ -5,7 +5,6 @@ import {thirdPartyString} from './_vendor/thirdParty1';
 import * as thirdParty2 from './_vendor/thirdParty2';
 import template from './_lib/template.html!text';
 
-
 function hello() {
   var util = new Util();
   console.log(util.name());
