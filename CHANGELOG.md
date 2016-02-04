@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.2.11
+* Feature: Switch to AirBnB style guide (since the Spotify one is a fork)
+* Fix: Bump dependencies
+
 ## Version 2.2.10
 
 * Fix: Log errors to the console also in server mode
