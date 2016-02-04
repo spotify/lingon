@@ -1,18 +1,10 @@
 {
-  "preset": "google",
-
-  "requireAlignedObjectValues": "all",
-  "disallowSpaceBeforeBinaryOperators": [","],
-  "disallowSpaceBeforePostfixUnaryOperators": true,
-  "disallowSpacesInCallExpression": true,
-  "disallowYodaConditions": true,
-  "requireBlocksOnNewline": 1,
-  "requireCommaBeforeLineBreak": true,
-  "requireLineBreakAfterVariableAssignment": true,
-  "requireParenthesesAroundIIFE": true,
-  "requireSemicolons": true,
-  "validateQuoteMarks": {
-    "escape": true,
-    "mark": "'"
-  }
+  "preset": "airbnb",
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do"
+  ]
 }

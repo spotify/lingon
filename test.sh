@@ -14,9 +14,6 @@ else
   target='tests/system/*'
 fi
 
-echo "Running code linter (jshint)"
-./node_modules/.bin/jshint lib/
-
 echo "Running code style test (jscs)"
 ./node_modules/.bin/jscs lib/ --reporter=inline
 

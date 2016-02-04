@@ -55,8 +55,7 @@
     "vinyl-fs": "~2.3.1"
   },
   "devDependencies": {
-    "jscs": "^1.13.0",
-    "jshint": "^2.7.0",
+    "jscs": "~2.9.0",
     "lingon-ng-html2js": "~0.1.6"
   },
   "keywords": [
