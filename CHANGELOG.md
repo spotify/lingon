@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.3.0
+
+* Feature: Added a static-server command which builds exactly once before serving files
+
 ## Version 2.2.11
 * Feature: Switch to AirBnB style guide (since the Spotify one is a fork)
 * Fix: Bump dependencies
