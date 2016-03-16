@@ -106,7 +106,7 @@ Lingon read the source directory and found the index.html file. It was then oupu
 
 ## <a name="chapter-02">02 Serve the project locally</a>
 
-One of the primary features of Lingon is the built in http server. It allows you to serve the project locally and view it in your browser. Refreshing will trigger a rebuild, so you can work and instantly see your changes.
+One of the primary features of Lingon is the built in http server. It allows you to serve the project locally and view it in your browser. Refreshing will trigger a rebuild for the requested files, so you can work and instantly see your changes.
 
 To start the built in http server, run:
 
@@ -115,6 +115,14 @@ To start the built in http server, run:
 ```
 
 The server "task" is the default in Lingon, so just running `./lingon.js` will also start the server.
+
+In some cases it's better to build once and then serve static files (without rebuilding on every request). This is useful when running lingon in a system / e2e test setup.
+
+To build once and start the static server, run: 
+
+```
+./lingon.js static-server
+```
 
 ## <a name="chapter-03">03 Using file directives</a>
 
