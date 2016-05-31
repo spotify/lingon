@@ -45,7 +45,7 @@ $ cd hello-world
 $ lingon
 
 [ Lingon ] Working directory: /path/to/hello-world
-[ Lingon ] http server listening on: 0.0.0.0:5678
+[ Lingon ] http server listening on: http://localhost:5678/
 ```
 
 ### Project structure
