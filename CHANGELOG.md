@@ -1,5 +1,9 @@
 # Changelog
 
+## Latest
+
+* Fix: End the process with a proper exit code
+
 ## Version 2.3.0
 
 * Feature: Added a static-server command which builds exactly once before serving files
