@@ -1,6 +1,6 @@
 # Changelog
 
-## Latest
+## Version 2.3.1
 
 * Fix: End the process with a proper exit code
 
