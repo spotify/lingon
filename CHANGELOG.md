@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.4.0
+
+* Feature: Add hostname and port as arguments to the serverConfigure event callback function
+
 ## Version 2.3.1
 
 * Fix: End the process with a proper exit code
