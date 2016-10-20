@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.4.1
+
+* Fix: Better handling of exceptions that originate in gulp streams. Ensure non-zero exit code is returned upon any failure.
+
 ## Version 2.4.0
 
 * Feature: Add hostname and port as arguments to the serverConfigure event callback function
