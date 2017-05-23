@@ -1,6 +1,5 @@
 # lingon
-![Image of Lingon berries]
-(https://farm3.staticflickr.com/2548/3873990304_1d2bd40ebc_m.jpg)<br>
+![Image of Lingon berries](https://farm3.staticflickr.com/2548/3873990304_1d2bd40ebc_m.jpg)<br>
 
 [![Build Status](https://travis-ci.org/spotify/lingon.svg?branch=master)](https://travis-ci.org/spotify/lingon)
 [![Dependency Status](https://david-dm.org/spotify/lingon.svg)](https://david-dm.org/spotify/lingon)
