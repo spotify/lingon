@@ -64,7 +64,7 @@ README.md
 LICENSE
 ```
 
-Lingon is configured and run from a file called `lingon.js`. This is where you define which plugins to use and how they should interact. The most basic valid "lingon.js" file looks like this:
+Lingon is configured and run from a file called `lingon.js`. This is where you define which plugins to use and how they should interact. The most basic valid `lingon.js` file looks like this:
 
 ```JavaScript
 #!/usr/bin/env node
@@ -120,11 +120,11 @@ Alternatively, you can execute the `lingon.js` file directly without installing 
 
 ## How does it relate to Make, Gulp, Grunt, X?
 
-Lingon favors convention over configuration. For example, Grunt & Gulp provide powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-pasta going on when starting something new.
+Lingon favors convention over configuration. For example, Grunt & Gulp provide powerful API's for building very customized build scripts. This requires you to write a bit of code everytime you want your build system to do something new. Each step in the build pipeline is carefully orchestrated so every project becomes special. This means there's a lot of copy-paste going on when starting something new.
 
 Lingon is inspired by Sprockets and uses a convention approach: A set of simple rules are used to determine what files to build, how to build them and where to put them. Files are processed based on their filename extensions.
 
-Example: "index.html.ejs" will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Lingon something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
+Example: `index.html.ejs` will be run through the EJS processor. These processors are gulp plugins, which allows us to leverage a large collection of great existing plugins. If you want to teach Lingon something new, you just have to define the mapping between a file ending and a gulp plugin. That's it!
 
 
 ## Test it
